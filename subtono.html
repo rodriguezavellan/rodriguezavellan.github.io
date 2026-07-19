@@ -1064,13 +1064,10 @@
       roundRectPath(ctx, x, y, w, h, 16);
       ctx.clip();
 
-      ctx.globalCompositeOperation = 'color';
-      ctx.globalAlpha = 0.88;
+      // Solid, fully opaque fill — no blending with the fabric texture underneath.
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = 1;
       ctx.fillStyle = selectedClothHex;
-      ctx.fillRect(x - 2, y - 2, w + 4, h + 4);
-
-      ctx.globalCompositeOperation = 'multiply';
-      ctx.globalAlpha = 0.12;
       ctx.fillRect(x - 2, y - 2, w + 4, h + 4);
 
       ctx.restore();
