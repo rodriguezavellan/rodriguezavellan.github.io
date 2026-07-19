@@ -395,6 +395,125 @@
     margin:2px 0 0;
   }
 
+  .lip-try-card{ margin-top:4px; }
+  .lip-caption{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    margin:6px 0 12px;
+  }
+  .lip-stage{
+    position:relative;
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    background:var(--paper);
+    border:1px solid var(--line);
+  }
+  .lip-stage canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+  }
+  .lip-guide{
+    position:absolute;
+    border:2px dashed rgba(255,255,255,0.9);
+    border-radius:50%;
+    box-shadow:0 0 0 1px rgba(33,26,23,0.35);
+    cursor:move;
+    touch-action:none;
+  }
+  .lip-guide-handle{
+    position:absolute;
+    right:-7px;
+    bottom:-7px;
+    width:15px;
+    height:15px;
+    background:#fff;
+    border:2px solid var(--ink);
+    border-radius:50%;
+    cursor:nwse-resize;
+    touch-action:none;
+  }
+  .lip-shades{
+    display:flex;
+    gap:12px;
+    margin-top:14px;
+    flex-wrap:wrap;
+  }
+  .lip-shade{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:5px;
+    background:none;
+    border:none;
+    padding:0;
+    flex:none;
+    cursor:pointer;
+  }
+  .lip-shade-swatch{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:2px solid transparent;
+    outline:1px solid rgba(0,0,0,0.08);
+    transition:transform .15s ease, outline .15s ease;
+  }
+  .lip-shade.active .lip-shade-swatch{
+    outline:2px solid var(--ink);
+    outline-offset:2px;
+    transform:scale(1.05);
+  }
+  .lip-shade-name{
+    font-size:9.5px;
+    color:var(--ink-soft);
+    max-width:52px;
+    text-align:center;
+    line-height:1.25;
+  }
+  .cloth-shade .lip-shade-swatch{ border-radius:9px; }
+  .btn-clear-lip{ width:100%; margin-top:14px; }
+
+  .cloth-stage{
+    position:relative;
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    background:var(--paper);
+    border:1px solid var(--line);
+  }
+  .cloth-stage canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+  }
+  .cloth-guide{
+    position:absolute;
+    border:2px dashed rgba(255,255,255,0.9);
+    border-radius:14px;
+    box-shadow:0 0 0 1px rgba(33,26,23,0.35);
+    cursor:move;
+    touch-action:none;
+  }
+  .cloth-guide-handle{
+    position:absolute;
+    right:-7px;
+    bottom:-7px;
+    width:15px;
+    height:15px;
+    background:#fff;
+    border:2px solid var(--ink);
+    border-radius:50%;
+    cursor:nwse-resize;
+    touch-action:none;
+  }
+  .btn-clear-cloth{ width:100%; margin-top:14px; }
+
   .reset-row{ margin-top:22px; }
 
   .privacy{
@@ -474,6 +593,32 @@
       </div>
 
       <p class="result-note" id="resultNote"></p>
+
+      <hr class="divider">
+
+      <p class="section-title">Prueba tu labial</p>
+      <p class="lip-caption">Arrastra el óvalo hasta tus labios y ajusta el tamaño desde la esquina. Luego toca un tono para verlo aplicado.</p>
+      <div class="lip-stage" id="lipStage">
+        <canvas id="lipCanvas"></canvas>
+        <div class="lip-guide" id="lipGuide">
+          <div class="lip-guide-handle" id="lipGuideHandle"></div>
+        </div>
+      </div>
+      <div class="lip-shades" id="lipShades"></div>
+      <button class="btn-secondary btn-clear-lip" id="btnClearLip">Quitar color</button>
+
+      <hr class="divider">
+
+      <p class="section-title">Prueba tu ropa</p>
+      <p class="lip-caption">Arrastra el marco hasta tu prenda y ajusta el tamaño desde la esquina. Luego toca un color para verlo aplicado.</p>
+      <div class="cloth-stage" id="clothStage">
+        <canvas id="clothCanvas"></canvas>
+        <div class="cloth-guide" id="clothGuide">
+          <div class="cloth-guide-handle" id="clothGuideHandle"></div>
+        </div>
+      </div>
+      <div class="lip-shades" id="clothShades"></div>
+      <button class="btn-secondary btn-clear-cloth" id="btnClearCloth">Quitar color</button>
 
       <hr class="divider">
 
@@ -615,6 +760,54 @@
     ]
   };
 
+  const LIP_SHADES = {
+    warm: [
+      { name:'Ladrillo', hex:'#A9431F' },
+      { name:'Coral intenso', hex:'#D9603A' },
+      { name:'Terracota', hex:'#B8622A' },
+      { name:'Rojo anaranjado', hex:'#C0392B' }
+    ],
+    cool: [
+      { name:'Rojo azulado', hex:'#8C1F3D' },
+      { name:'Fucsia', hex:'#A8306E' },
+      { name:'Ciruela', hex:'#6E2D52' },
+      { name:'Rosa frío', hex:'#C75C82' }
+    ],
+    neutral: [
+      { name:'Nude rosado', hex:'#B5876B' },
+      { name:'Vino suave', hex:'#6E4A3E' },
+      { name:'Terracota apagada', hex:'#8E5A4A' },
+      { name:'Malva', hex:'#7D6A5B' }
+    ]
+  };
+
+  const CLOTHING_SHADES = {
+    warm: [
+      { name:'Terracota', hex:'#B8622A' },
+      { name:'Mostaza', hex:'#D9A441' },
+      { name:'Oliva', hex:'#8A9A3B' },
+      { name:'Rojo teja', hex:'#C0392B' },
+      { name:'Dorado champán', hex:'#E6C179' },
+      { name:'Chocolate', hex:'#5C4425' }
+    ],
+    cool: [
+      { name:'Azul zafiro', hex:'#2B3A67' },
+      { name:'Vino borgoña', hex:'#7A2048' },
+      { name:'Esmeralda', hex:'#1F6F5C' },
+      { name:'Índigo', hex:'#4C5B8C' },
+      { name:'Lavanda hielo', hex:'#C4C9E8' },
+      { name:'Azul medianoche', hex:'#0F1E2E' }
+    ],
+    neutral: [
+      { name:'Caqui', hex:'#8B8564' },
+      { name:'Taupe', hex:'#7D6A5B' },
+      { name:'Verde salvia', hex:'#546A5E' },
+      { name:'Camel', hex:'#B08968' },
+      { name:'Azul pizarra', hex:'#3E4A5B' },
+      { name:'Beige piedra', hex:'#C9BFA5' }
+    ]
+  };
+
   function renderProducts(classification){
     const track = document.getElementById('productScroll');
     document.getElementById('sponsorSub').textContent = SPONSOR_INTRO[classification];
@@ -672,10 +865,301 @@
     });
 
     renderProducts(classification);
+    initLipTry(classification);
+    initClothTry(classification);
 
     // needle angle: map hue angle range [35..80] to [-80..80] degrees, done by caller
     result.classList.add('show');
   }
+
+  // ---------- Lip try-on ----------
+  const lipStage = document.getElementById('lipStage');
+  const lipCanvas = document.getElementById('lipCanvas');
+  const lipGuide = document.getElementById('lipGuide');
+  const lipGuideHandle = document.getElementById('lipGuideHandle');
+  const lipShadesRow = document.getElementById('lipShades');
+  const btnClearLip = document.getElementById('btnClearLip');
+
+  // Guide rect in percentages of the square stage, roughly centered on
+  // where lips typically sit relative to the face oval used for sampling.
+  let lipRect = { left: 37, top: 64, width: 26, height: 11 };
+  let selectedLipHex = null;
+  const MIN_PCT = 8, MAX_PCT = 62;
+
+  function applyLipGuideStyle(){
+    lipGuide.style.left = lipRect.left + '%';
+    lipGuide.style.top = lipRect.top + '%';
+    lipGuide.style.width = lipRect.width + '%';
+    lipGuide.style.height = lipRect.height + '%';
+  }
+
+  function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+
+  function renderLipTint(){
+    if (!lipCanvas.width) return;
+    const ctx = lipCanvas.getContext('2d');
+    ctx.clearRect(0, 0, lipCanvas.width, lipCanvas.height);
+    ctx.drawImage(previewCanvas, 0, 0, lipCanvas.width, lipCanvas.height);
+
+    if (selectedLipHex) {
+      const W = lipCanvas.width, H = lipCanvas.height;
+      const x = (lipRect.left / 100) * W;
+      const y = (lipRect.top / 100) * H;
+      const w = (lipRect.width / 100) * W;
+      const h = (lipRect.height / 100) * H;
+      const cx = x + w / 2, cy = y + h / 2, rx = w / 2, ry = h / 2;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
+      ctx.clip();
+
+      // 'color' preserves the photo's natural shading/highlights while
+      // taking on the hue + saturation of the chosen lipstick.
+      ctx.globalCompositeOperation = 'color';
+      ctx.globalAlpha = 0.85;
+      ctx.fillStyle = selectedLipHex;
+      ctx.fillRect(x - 2, y - 2, w + 4, h + 4);
+
+      // subtle multiply pass adds pigment depth so it doesn't look washed out
+      ctx.globalCompositeOperation = 'multiply';
+      ctx.globalAlpha = 0.16;
+      ctx.fillRect(x - 2, y - 2, w + 4, h + 4);
+
+      ctx.restore();
+    }
+  }
+
+  function renderLipShadeButtons(classification){
+    lipShadesRow.innerHTML = '';
+    LIP_SHADES[classification].forEach(shade => {
+      const btn = document.createElement('button');
+      btn.className = 'lip-shade';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', shade.name);
+      btn.innerHTML = `<span class="lip-shade-swatch" style="background:${shade.hex}"></span><span class="lip-shade-name">${shade.name}</span>`;
+      btn.addEventListener('click', () => {
+        selectedLipHex = shade.hex;
+        [...lipShadesRow.children].forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        renderLipTint();
+      });
+      lipShadesRow.appendChild(btn);
+    });
+  }
+
+  function initLipTry(classification){
+    lipCanvas.width = previewCanvas.width || 500;
+    lipCanvas.height = previewCanvas.height || 500;
+    lipRect = { left: 37, top: 64, width: 26, height: 11 };
+    selectedLipHex = null;
+    applyLipGuideStyle();
+    renderLipShadeButtons(classification);
+    renderLipTint();
+  }
+
+  // Drag to move the guide
+  let dragMode = null; // 'move' | 'resize'
+  let dragStart = null;
+
+  lipGuide.addEventListener('pointerdown', (e) => {
+    if (e.target === lipGuideHandle) return;
+    dragMode = 'move';
+    dragStart = { x: e.clientX, y: e.clientY, rect: { ...lipRect } };
+    lipGuide.setPointerCapture(e.pointerId);
+  });
+
+  lipGuideHandle.addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    dragMode = 'resize';
+    dragStart = { x: e.clientX, y: e.clientY, rect: { ...lipRect } };
+    lipGuideHandle.setPointerCapture(e.pointerId);
+  });
+
+  function onLipPointerMove(e){
+    if (!dragMode || !dragStart) return;
+    const stageRect = lipStage.getBoundingClientRect();
+    const dxPct = ((e.clientX - dragStart.x) / stageRect.width) * 100;
+    const dyPct = ((e.clientY - dragStart.y) / stageRect.height) * 100;
+
+    if (dragMode === 'move') {
+      lipRect.left = clamp(dragStart.rect.left + dxPct, 0, 100 - lipRect.width);
+      lipRect.top = clamp(dragStart.rect.top + dyPct, 0, 100 - lipRect.height);
+    } else if (dragMode === 'resize') {
+      lipRect.width = clamp(dragStart.rect.width + dxPct, MIN_PCT, MAX_PCT);
+      lipRect.height = clamp(dragStart.rect.height + dyPct * 0.6, MIN_PCT * 0.5, MAX_PCT * 0.6);
+      lipRect.left = clamp(lipRect.left, 0, 100 - lipRect.width);
+      lipRect.top = clamp(lipRect.top, 0, 100 - lipRect.height);
+    }
+    applyLipGuideStyle();
+    renderLipTint();
+  }
+
+  function onLipPointerUp(e){
+    dragMode = null;
+    dragStart = null;
+    try { lipGuide.releasePointerCapture(e.pointerId); } catch(err) {}
+    try { lipGuideHandle.releasePointerCapture(e.pointerId); } catch(err) {}
+  }
+
+  lipGuide.addEventListener('pointermove', onLipPointerMove);
+  lipGuide.addEventListener('pointerup', onLipPointerUp);
+  lipGuide.addEventListener('pointercancel', onLipPointerUp);
+  lipGuideHandle.addEventListener('pointermove', onLipPointerMove);
+  lipGuideHandle.addEventListener('pointerup', onLipPointerUp);
+  lipGuideHandle.addEventListener('pointercancel', onLipPointerUp);
+
+  btnClearLip.addEventListener('click', () => {
+    selectedLipHex = null;
+    [...lipShadesRow.children].forEach(c => c.classList.remove('active'));
+    renderLipTint();
+  });
+
+  // ---------- Clothing try-on ----------
+  const clothStage = document.getElementById('clothStage');
+  const clothCanvas = document.getElementById('clothCanvas');
+  const clothGuide = document.getElementById('clothGuide');
+  const clothGuideHandle = document.getElementById('clothGuideHandle');
+  const clothShadesRow = document.getElementById('clothShades');
+  const btnClearCloth = document.getElementById('btnClearCloth');
+
+  // Default frame sits in the lower part of the frame, where a shirt/top
+  // collar typically shows in a head-and-shoulders photo.
+  let clothRect = { left: 8, top: 80, width: 84, height: 18 };
+  let selectedClothHex = null;
+  const CLOTH_MIN_PCT = 15, CLOTH_MAX_W = 96, CLOTH_MAX_H = 40;
+
+  function applyClothGuideStyle(){
+    clothGuide.style.left = clothRect.left + '%';
+    clothGuide.style.top = clothRect.top + '%';
+    clothGuide.style.width = clothRect.width + '%';
+    clothGuide.style.height = clothRect.height + '%';
+  }
+
+  function roundRectPath(ctx, x, y, w, h, r){
+    const rr = Math.min(r, w / 2, h / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + rr, y);
+    ctx.arcTo(x + w, y, x + w, y + h, rr);
+    ctx.arcTo(x + w, y + h, x, y + h, rr);
+    ctx.arcTo(x, y + h, x, y, rr);
+    ctx.arcTo(x, y, x + w, y, rr);
+    ctx.closePath();
+  }
+
+  function renderClothTint(){
+    if (!clothCanvas.width) return;
+    const ctx = clothCanvas.getContext('2d');
+    ctx.clearRect(0, 0, clothCanvas.width, clothCanvas.height);
+    ctx.drawImage(previewCanvas, 0, 0, clothCanvas.width, clothCanvas.height);
+
+    if (selectedClothHex) {
+      const W = clothCanvas.width, H = clothCanvas.height;
+      const x = (clothRect.left / 100) * W;
+      const y = (clothRect.top / 100) * H;
+      const w = (clothRect.width / 100) * W;
+      const h = (clothRect.height / 100) * H;
+
+      ctx.save();
+      roundRectPath(ctx, x, y, w, h, 16);
+      ctx.clip();
+
+      ctx.globalCompositeOperation = 'color';
+      ctx.globalAlpha = 0.88;
+      ctx.fillStyle = selectedClothHex;
+      ctx.fillRect(x - 2, y - 2, w + 4, h + 4);
+
+      ctx.globalCompositeOperation = 'multiply';
+      ctx.globalAlpha = 0.12;
+      ctx.fillRect(x - 2, y - 2, w + 4, h + 4);
+
+      ctx.restore();
+    }
+  }
+
+  function renderClothShadeButtons(classification){
+    clothShadesRow.innerHTML = '';
+    CLOTHING_SHADES[classification].forEach(shade => {
+      const btn = document.createElement('button');
+      btn.className = 'lip-shade cloth-shade';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', shade.name);
+      btn.innerHTML = `<span class="lip-shade-swatch" style="background:${shade.hex}"></span><span class="lip-shade-name">${shade.name}</span>`;
+      btn.addEventListener('click', () => {
+        selectedClothHex = shade.hex;
+        [...clothShadesRow.children].forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        renderClothTint();
+      });
+      clothShadesRow.appendChild(btn);
+    });
+  }
+
+  function initClothTry(classification){
+    clothCanvas.width = previewCanvas.width || 500;
+    clothCanvas.height = previewCanvas.height || 500;
+    clothRect = { left: 8, top: 80, width: 84, height: 18 };
+    selectedClothHex = null;
+    applyClothGuideStyle();
+    renderClothShadeButtons(classification);
+    renderClothTint();
+  }
+
+  let clothDragMode = null;
+  let clothDragStart = null;
+
+  clothGuide.addEventListener('pointerdown', (e) => {
+    if (e.target === clothGuideHandle) return;
+    clothDragMode = 'move';
+    clothDragStart = { x: e.clientX, y: e.clientY, rect: { ...clothRect } };
+    clothGuide.setPointerCapture(e.pointerId);
+  });
+
+  clothGuideHandle.addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    clothDragMode = 'resize';
+    clothDragStart = { x: e.clientX, y: e.clientY, rect: { ...clothRect } };
+    clothGuideHandle.setPointerCapture(e.pointerId);
+  });
+
+  function onClothPointerMove(e){
+    if (!clothDragMode || !clothDragStart) return;
+    const stageRect = clothStage.getBoundingClientRect();
+    const dxPct = ((e.clientX - clothDragStart.x) / stageRect.width) * 100;
+    const dyPct = ((e.clientY - clothDragStart.y) / stageRect.height) * 100;
+
+    if (clothDragMode === 'move') {
+      clothRect.left = clamp(clothDragStart.rect.left + dxPct, 0, 100 - clothRect.width);
+      clothRect.top = clamp(clothDragStart.rect.top + dyPct, 0, 100 - clothRect.height);
+    } else if (clothDragMode === 'resize') {
+      clothRect.width = clamp(clothDragStart.rect.width + dxPct, CLOTH_MIN_PCT, CLOTH_MAX_W);
+      clothRect.height = clamp(clothDragStart.rect.height + dyPct, CLOTH_MIN_PCT * 0.5, CLOTH_MAX_H);
+      clothRect.left = clamp(clothRect.left, 0, 100 - clothRect.width);
+      clothRect.top = clamp(clothRect.top, 0, 100 - clothRect.height);
+    }
+    applyClothGuideStyle();
+    renderClothTint();
+  }
+
+  function onClothPointerUp(e){
+    clothDragMode = null;
+    clothDragStart = null;
+    try { clothGuide.releasePointerCapture(e.pointerId); } catch(err) {}
+    try { clothGuideHandle.releasePointerCapture(e.pointerId); } catch(err) {}
+  }
+
+  clothGuide.addEventListener('pointermove', onClothPointerMove);
+  clothGuide.addEventListener('pointerup', onClothPointerUp);
+  clothGuide.addEventListener('pointercancel', onClothPointerUp);
+  clothGuideHandle.addEventListener('pointermove', onClothPointerMove);
+  clothGuideHandle.addEventListener('pointerup', onClothPointerUp);
+  clothGuideHandle.addEventListener('pointercancel', onClothPointerUp);
+
+  btnClearCloth.addEventListener('click', () => {
+    selectedClothHex = null;
+    [...clothShadesRow.children].forEach(c => c.classList.remove('active'));
+    renderClothTint();
+  });
 
   // ---------- Color science ----------
   function srgbToLinear(c){
