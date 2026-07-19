@@ -19,6 +19,10 @@
     --cool-soft:#DCE1F0;
     --neutral:#7D7A55;
     --neutral-soft:#E7E5D3;
+    --spring:#D9713C;
+    --summer:#8C6A85;
+    --autumn:#A9431F;
+    --winter:#3B4C8C;
     --radius-lg:28px;
     --radius-md:18px;
     --radius-sm:10px;
@@ -216,11 +220,40 @@
     font-family:'Fraunces', serif;
     font-weight:650;
     font-size:30px;
-    margin-top:6px;
+    margin-top:2px;
   }
   .dial-label.warm{ color:var(--warm); }
   .dial-label.cool{ color:var(--cool); }
   .dial-label.neutral{ color:var(--neutral); }
+
+  .season-result{
+    margin-top:16px;
+    text-align:center;
+  }
+  .season-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .season-name{
+    font-family:'Fraunces', serif;
+    font-weight:650;
+    font-size:26px;
+    margin-top:3px;
+  }
+  .season-name.spring{ color:var(--spring); }
+  .season-name.summer{ color:var(--summer); }
+  .season-name.autumn{ color:var(--autumn); }
+  .season-name.winter{ color:var(--winter); }
+  .season-desc{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    max-width:300px;
+    margin:6px auto 0;
+  }
 
   .confidence{
     font-family:'IBM Plex Mono', monospace;
@@ -228,6 +261,29 @@
     color:var(--ink-soft);
     letter-spacing:0.03em;
     margin-top:2px;
+  }
+
+  .season-badges{
+    display:flex;
+    gap:7px;
+    margin-top:14px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .season-badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.03em;
+    color:var(--ink-soft);
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:5px 11px;
+    border-radius:999px;
+  }
+  .season-badge.active{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
   }
 
   .result-note{
@@ -590,6 +646,13 @@
         </svg>
         <div class="dial-label" id="dialLabel">—</div>
         <div class="confidence" id="confidenceText">confianza — %</div>
+
+        <div class="season-result">
+          <div class="season-eyebrow">Tu estación de color</div>
+          <div class="season-name" id="seasonName">—</div>
+          <p class="season-desc" id="seasonDesc"></p>
+          <div class="season-badges" id="seasonBadges"></div>
+        </div>
       </div>
 
       <p class="result-note" id="resultNote"></p>
@@ -693,126 +756,191 @@
     warm: {
       name: 'Cálido',
       cls: 'warm',
-      note: 'Tu piel tiene una base dorada/amarilla. Los colores tierra y los tonos dorados resaltan tu luminosidad natural.',
-      clothing: ['#B8622A','#D9A441','#8A9A3B','#C0392B','#E6C179','#5C4425'],
-      foundation: 'Busca bases etiquetadas como "warm" o "golden": con matices amarillos o durazno, nunca rosados.',
-      blush: 'Durazno, coral y terracota suave.',
-      lip: 'Ladrillo, coral intenso, terracota y rojos anaranjados.',
-      makeup: ['#D98B4A','#C0522A','#E0A96D','#A9431F'],
-      jewelry: 'El oro amarillo y el bronce iluminan tu piel más que la plata.',
-      avoid: ['Plata muy brillante', 'Rosas fríos / magenta', 'Azules helados', 'Blanco puro']
+      note: 'Tu piel tiene una base dorada/amarilla. Los colores tierra y los tonos dorados resaltan tu luminosidad natural.'
     },
     cool: {
       name: 'Frío',
       cls: 'cool',
-      note: 'Tu piel tiene una base rosada/azulada. Los tonos joya y los colores fríos y saturados resaltan tu contraste natural.',
-      clothing: ['#2B3A67','#7A2048','#1F6F5C','#4C5B8C','#C4C9E8','#0F1E2E'],
-      foundation: 'Busca bases etiquetadas como "cool" o "rosy": con matices rosados, nunca amarillos o dorados.',
-      blush: 'Rosa frío, ciruela y frambuesa.',
-      lip: 'Rojo azulado, fucsia, ciruela y rosa frío.',
-      makeup: ['#A83B62','#6E2D52','#C75C82','#5A2340'],
-      jewelry: 'La plata, el oro blanco y el platino combinan mejor que el oro amarillo.',
-      avoid: ['Naranjas y mostazas', 'Oro muy amarillo', 'Tonos caqui/oliva', 'Beige cálido']
+      note: 'Tu piel tiene una base rosada/azulada. Los tonos joya y los colores fríos y saturados resaltan tu contraste natural.'
     },
     neutral: {
       name: 'Neutro',
       cls: 'neutral',
-      note: 'Tu piel equilibra matices cálidos y fríos. Tienes flexibilidad para jugar con ambos extremos de la paleta.',
-      clothing: ['#8B8564','#7D6A5B','#546A5E','#B08968','#3E4A5B','#C9BFA5'],
-      foundation: 'Busca bases "neutral" o mezcla una base cálida con una fría para igualar tu tono real.',
-      blush: 'Rosa durazno y malva suave.',
-      lip: 'Nude rosado, vino suave y terracota apagada.',
-      makeup: ['#B5876B','#8E5A4A','#C79B84','#6E4A3E'],
-      jewelry: 'Tanto el oro como la plata te favorecen; elige según la ocasión.',
-      avoid: ['Tonos extremadamente saturados en ambos extremos', 'Neón']
+      note: 'Tu piel equilibra matices cálidos y fríos. Tienes flexibilidad para jugar con ambos extremos de la paleta.'
+    }
+  };
+
+  // The season adds a second axis (claridad/profundidad) on top of the
+  // warm/cool undertone above, giving the classic 4-season result.
+  const SEASON_META = {
+    spring: {
+      name: 'Primavera',
+      cls: 'spring',
+      desc: 'Piel cálida y clara, con brillo natural. Los colores vivos, frescos y dorados te sientan mejor que los apagados.'
+    },
+    summer: {
+      name: 'Verano',
+      cls: 'summer',
+      desc: 'Piel fría y clara, de bajo contraste. Los tonos suaves, empolvados y plateados resaltan tu delicadeza natural.'
+    },
+    autumn: {
+      name: 'Otoño',
+      cls: 'autumn',
+      desc: 'Piel cálida y profunda. Los colores tierra, especiados y dorados envejecidos resaltan tu riqueza natural.'
+    },
+    winter: {
+      name: 'Invierno',
+      cls: 'winter',
+      desc: 'Piel fría y profunda, de alto contraste. Los colores intensos, nítidos y joya resaltan tu fuerza natural.'
+    }
+  };
+
+  const SEASON_PALETTES = {
+    spring: {
+      clothing: ['#E8735A','#F0B25E','#7FC9B4','#F2CC3B','#9ACD32','#FFF3D6'],
+      foundation: 'Busca bases con matiz dorado/durazno, de textura luminosa — evita las opacas o muy densas.',
+      blush: 'Durazno brillante y coral cálido.',
+      lip: 'Coral vivo, durazno brillante, rojo tomate y rosa coral.',
+      makeup: ['#E8735A','#F0956B','#E2472A','#D9A441'],
+      jewelry: 'El oro amarillo brillante y pulido es tu mejor aliado.',
+      avoid: ['Negro absoluto', 'Grises fríos apagados', 'Pasteles polvorientos', 'Plata opaca']
+    },
+    summer: {
+      clothing: ['#A9C4D6','#D8A7B1','#B7A8CE','#B9B9B9','#9C7C8C','#EDE6E6'],
+      foundation: 'Busca bases con matiz rosado/neutro y acabado mate suave — evita las de base amarilla.',
+      blush: 'Rosa malva y rosa empolvado.',
+      lip: 'Rosa malva, ciruela suave, rosa frío suave y frambuesa apagada.',
+      makeup: ['#B98A9A','#8C6A78','#C98FA0','#A15C6E'],
+      jewelry: 'La plata mate y el oro rosa suave combinan mejor que el oro amarillo brillante.',
+      avoid: ['Naranjas vibrantes', 'Negro puro', 'Dorado muy brillante', 'Estampados de alto contraste']
+    },
+    autumn: {
+      clothing: ['#B8622A','#6B8E23','#D9A441','#5C4425','#3B5323','#C19A6B'],
+      foundation: 'Busca bases con matiz dorado/cálido intenso y acabado natural — evita las de base rosada.',
+      blush: 'Terracota suave y durazno tostado.',
+      lip: 'Ladrillo, terracota, vino terroso y naranja quemado.',
+      makeup: ['#A9431F','#B8622A','#7A3B2E','#C1440E'],
+      jewelry: 'El oro antiguo, el bronce y el cobre resaltan tu piel mejor que la plata.',
+      avoid: ['Rosas fríos brillantes', 'Blanco puro', 'Plata muy brillante', 'Pasteles helados']
+    },
+    winter: {
+      clothing: ['#C0122F','#046A38','#0B3D91','#111111','#C2185B','#F5F7FA'],
+      foundation: 'Busca bases con matiz rosado/neutro frío y cobertura media-alta — evita las de base dorada.',
+      blush: 'Rosa frío intenso y frambuesa.',
+      lip: 'Rojo verdadero, fucsia intenso, ciruela oscuro y frambuesa.',
+      makeup: ['#C0122F','#C2185B','#5B1A38','#9E1B4D'],
+      jewelry: 'La plata, el platino y el oro blanco brillante son tu mejor opción.',
+      avoid: ['Mostaza', 'Naranja terroso', 'Beige cálido', 'Colores apagados o polvorientos']
     }
   };
 
   const SPONSOR_INTRO = {
-    warm: 'Piezas y tonos dorados que marcas asociadas han preparado para pieles cálidas.',
-    cool: 'Piezas y tonos plateados que marcas asociadas han preparado para pieles frías.',
-    neutral: 'Piezas versátiles que marcas asociadas recomiendan para pieles neutras.'
+    spring: 'Piezas frescas y doradas que marcas asociadas han preparado para tu Primavera.',
+    summer: 'Piezas suaves y empolvadas que marcas asociadas han preparado para tu Verano.',
+    autumn: 'Piezas cálidas y terrosas que marcas asociadas han preparado para tu Otoño.',
+    winter: 'Piezas intensas y de alto contraste que marcas asociadas han preparado para tu Invierno.'
   };
 
   // Example sponsored placements — in production these would come from a live
-  // product/affiliate feed, filtered server-side by the detected undertone.
+  // product/affiliate feed, filtered server-side by the detected season.
   const PRODUCTS = {
-    warm: [
-      { cat:'Ropa', brand:'Norte & Tierra', name:'Camisa lino terracota', price:'€39', hex:'#B8622A' },
-      { cat:'Maquillaje', brand:'Alba Studio', name:'Base tono cálido dorado', price:'€24', hex:'#D98B4A' },
-      { cat:'Maquillaje', brand:'Cobre Lab', name:'Labial mate "Ladrillo"', price:'€18', hex:'#A9431F' },
-      { cat:'Joyería', brand:'Sol Atelier', name:'Aretes baño de oro', price:'€32', hex:'#E6C179' },
-      { cat:'Ropa', brand:'Campo Studio', name:'Suéter mostaza', price:'€45', hex:'#D9A441' }
+    spring: [
+      { cat:'Ropa', brand:'Norte & Tierra', name:'Camisa lino coral', price:'€39', hex:'#E8735A' },
+      { cat:'Maquillaje', brand:'Alba Studio', name:'Base luminosa durazno', price:'€24', hex:'#F0956B' },
+      { cat:'Maquillaje', brand:'Cobre Lab', name:'Labial "Coral vivo"', price:'€18', hex:'#E2472A' },
+      { cat:'Joyería', brand:'Sol Atelier', name:'Aretes oro brillante', price:'€32', hex:'#F2CC3B' },
+      { cat:'Ropa', brand:'Campo Studio', name:'Blusa verde manzana', price:'€45', hex:'#9ACD32' }
     ],
-    cool: [
-      { cat:'Ropa', brand:'Índigo & Co', name:'Blusa azul zafiro', price:'€42', hex:'#2B3A67' },
-      { cat:'Maquillaje', brand:'Alba Studio', name:'Base tono frío rosado', price:'€24', hex:'#C75C82' },
-      { cat:'Maquillaje', brand:'Ciruela Lab', name:'Labial "Frambuesa fría"', price:'€18', hex:'#7A2048' },
-      { cat:'Joyería', brand:'Luna Atelier', name:'Aretes plata 925', price:'€34', hex:'#C4C9E8' },
-      { cat:'Ropa', brand:'Bruma Studio', name:'Vestido esmeralda', price:'€48', hex:'#1F6F5C' }
+    summer: [
+      { cat:'Ropa', brand:'Bruma Studio', name:'Blusa azul empolvado', price:'€42', hex:'#A9C4D6' },
+      { cat:'Maquillaje', brand:'Alba Studio', name:'Base mate rosado suave', price:'€24', hex:'#D8A7B1' },
+      { cat:'Maquillaje', brand:'Malva Lab', name:'Labial "Rosa malva"', price:'€18', hex:'#8C6A78' },
+      { cat:'Joyería', brand:'Luna Atelier', name:'Aretes plata mate', price:'€34', hex:'#B9B9B9' },
+      { cat:'Ropa', brand:'Niebla Studio', name:'Vestido lavanda', price:'€48', hex:'#B7A8CE' }
     ],
-    neutral: [
-      { cat:'Ropa', brand:'Terreno Studio', name:'Chaqueta taupe', price:'€52', hex:'#7D6A5B' },
-      { cat:'Maquillaje', brand:'Alba Studio', name:'Base tono neutro', price:'€24', hex:'#B5876B' },
-      { cat:'Maquillaje', brand:'Malva Lab', name:'Labial "Vino suave"', price:'€18', hex:'#6E4A3E' },
-      { cat:'Joyería', brand:'Dual Atelier', name:'Set oro + plata mixto', price:'€36', hex:'#C9BFA5' },
-      { cat:'Ropa', brand:'Musgo Studio', name:'Camisa verde salvia', price:'€40', hex:'#546A5E' }
+    autumn: [
+      { cat:'Ropa', brand:'Terreno Studio', name:'Chaqueta terracota', price:'€52', hex:'#B8622A' },
+      { cat:'Maquillaje', brand:'Alba Studio', name:'Base cálida intensa', price:'€24', hex:'#A9431F' },
+      { cat:'Maquillaje', brand:'Cobre Lab', name:'Labial "Vino terroso"', price:'€18', hex:'#7A3B2E' },
+      { cat:'Joyería', brand:'Dual Atelier', name:'Aretes bronce antiguo', price:'€36', hex:'#C19A6B' },
+      { cat:'Ropa', brand:'Musgo Studio', name:'Suéter verde bosque', price:'€40', hex:'#3B5323' }
+    ],
+    winter: [
+      { cat:'Ropa', brand:'Índigo & Co', name:'Blusa azul zafiro', price:'€42', hex:'#0B3D91' },
+      { cat:'Maquillaje', brand:'Alba Studio', name:'Base fría cobertura media', price:'€24', hex:'#C2185B' },
+      { cat:'Maquillaje', brand:'Ciruela Lab', name:'Labial "Rojo verdadero"', price:'€18', hex:'#C0122F' },
+      { cat:'Joyería', brand:'Luna Atelier', name:'Aretes platino', price:'€34', hex:'#F5F7FA' },
+      { cat:'Ropa', brand:'Noche Studio', name:'Vestido esmeralda', price:'€48', hex:'#046A38' }
     ]
   };
 
   const LIP_SHADES = {
-    warm: [
+    spring: [
+      { name:'Coral vivo', hex:'#E8735A' },
+      { name:'Durazno brillante', hex:'#F0956B' },
+      { name:'Rojo tomate', hex:'#E2472A' },
+      { name:'Rosa coral', hex:'#E8896B' }
+    ],
+    summer: [
+      { name:'Rosa malva', hex:'#B98A9A' },
+      { name:'Ciruela suave', hex:'#8C6A78' },
+      { name:'Rosa frío suave', hex:'#C98FA0' },
+      { name:'Frambuesa apagada', hex:'#A15C6E' }
+    ],
+    autumn: [
       { name:'Ladrillo', hex:'#A9431F' },
-      { name:'Coral intenso', hex:'#D9603A' },
       { name:'Terracota', hex:'#B8622A' },
-      { name:'Rojo anaranjado', hex:'#C0392B' }
+      { name:'Vino terroso', hex:'#7A3B2E' },
+      { name:'Naranja quemado', hex:'#C1440E' }
     ],
-    cool: [
-      { name:'Rojo azulado', hex:'#8C1F3D' },
-      { name:'Fucsia', hex:'#A8306E' },
-      { name:'Ciruela', hex:'#6E2D52' },
-      { name:'Rosa frío', hex:'#C75C82' }
-    ],
-    neutral: [
-      { name:'Nude rosado', hex:'#B5876B' },
-      { name:'Vino suave', hex:'#6E4A3E' },
-      { name:'Terracota apagada', hex:'#8E5A4A' },
-      { name:'Malva', hex:'#7D6A5B' }
+    winter: [
+      { name:'Rojo verdadero', hex:'#C0122F' },
+      { name:'Fucsia intenso', hex:'#C2185B' },
+      { name:'Ciruela oscuro', hex:'#5B1A38' },
+      { name:'Frambuesa', hex:'#9E1B4D' }
     ]
   };
 
   const CLOTHING_SHADES = {
-    warm: [
+    spring: [
+      { name:'Coral', hex:'#E8735A' },
+      { name:'Durazno dorado', hex:'#F0B25E' },
+      { name:'Turquesa cálido', hex:'#7FC9B4' },
+      { name:'Amarillo dorado', hex:'#F2CC3B' },
+      { name:'Verde manzana', hex:'#9ACD32' },
+      { name:'Marfil', hex:'#FFF3D6' }
+    ],
+    summer: [
+      { name:'Azul empolvado', hex:'#A9C4D6' },
+      { name:'Rosa polvo', hex:'#D8A7B1' },
+      { name:'Lavanda', hex:'#B7A8CE' },
+      { name:'Gris suave', hex:'#B9B9B9' },
+      { name:'Malva', hex:'#9C7C8C' },
+      { name:'Blanco rosado', hex:'#EDE6E6' }
+    ],
+    autumn: [
       { name:'Terracota', hex:'#B8622A' },
+      { name:'Oliva', hex:'#6B8E23' },
       { name:'Mostaza', hex:'#D9A441' },
-      { name:'Oliva', hex:'#8A9A3B' },
-      { name:'Rojo teja', hex:'#C0392B' },
-      { name:'Dorado champán', hex:'#E6C179' },
-      { name:'Chocolate', hex:'#5C4425' }
+      { name:'Chocolate', hex:'#5C4425' },
+      { name:'Verde bosque', hex:'#3B5323' },
+      { name:'Camel', hex:'#C19A6B' }
     ],
-    cool: [
-      { name:'Azul zafiro', hex:'#2B3A67' },
-      { name:'Vino borgoña', hex:'#7A2048' },
-      { name:'Esmeralda', hex:'#1F6F5C' },
-      { name:'Índigo', hex:'#4C5B8C' },
-      { name:'Lavanda hielo', hex:'#C4C9E8' },
-      { name:'Azul medianoche', hex:'#0F1E2E' }
-    ],
-    neutral: [
-      { name:'Caqui', hex:'#8B8564' },
-      { name:'Taupe', hex:'#7D6A5B' },
-      { name:'Verde salvia', hex:'#546A5E' },
-      { name:'Camel', hex:'#B08968' },
-      { name:'Azul pizarra', hex:'#3E4A5B' },
-      { name:'Beige piedra', hex:'#C9BFA5' }
+    winter: [
+      { name:'Rojo verdadero', hex:'#C0122F' },
+      { name:'Esmeralda', hex:'#046A38' },
+      { name:'Azul zafiro', hex:'#0B3D91' },
+      { name:'Negro', hex:'#111111' },
+      { name:'Magenta', hex:'#C2185B' },
+      { name:'Blanco hielo', hex:'#F5F7FA' }
     ]
   };
 
-  function renderProducts(classification){
+  function renderProducts(season){
     const track = document.getElementById('productScroll');
-    document.getElementById('sponsorSub').textContent = SPONSOR_INTRO[classification];
+    document.getElementById('sponsorSub').textContent = SPONSOR_INTRO[season];
     track.innerHTML = '';
-    PRODUCTS[classification].forEach(item => {
+    PRODUCTS[season].forEach(item => {
       const card = document.createElement('div');
       card.className = 'product-card';
       card.innerHTML = `
@@ -840,35 +968,55 @@
     });
   }
 
-  function renderResult(classification, confidence){
+  function renderResult(classification, confidence, season, seasonConfidence){
     const p = PALETTES[classification];
     dialLabel.className = 'dial-label ' + p.cls;
     dialLabel.textContent = p.name;
     confidenceText.textContent = 'confianza ' + confidence + '%';
     resultNote.textContent = p.note;
 
-    renderSwatches(document.getElementById('clothingSwatches'), p.clothing);
-    renderSwatches(document.getElementById('makeupSwatches'), p.makeup);
+    const s = SEASON_META[season];
+    const sp = SEASON_PALETTES[season];
 
-    document.getElementById('mkFoundation').textContent = p.foundation;
-    document.getElementById('mkBlush').textContent = p.blush;
-    document.getElementById('mkLip').textContent = p.lip;
-    document.getElementById('jewelryText').textContent = p.jewelry;
+    const seasonNameEl = document.getElementById('seasonName');
+    seasonNameEl.className = 'season-name ' + s.cls;
+    seasonNameEl.textContent = s.name;
+    document.getElementById('seasonDesc').textContent = s.desc + ' (confianza ' + seasonConfidence + '%)';
+
+    const badgeRow = document.getElementById('seasonBadges');
+    badgeRow.innerHTML = '';
+    Object.keys(SEASON_META).forEach(key => {
+      const badge = document.createElement('span');
+      badge.className = 'season-badge' + (key === season ? ' active' : '');
+      badge.textContent = SEASON_META[key].name;
+      if (key === season) {
+        badge.style.background = `var(--${key})`;
+        badge.style.borderColor = `var(--${key})`;
+      }
+      badgeRow.appendChild(badge);
+    });
+
+    renderSwatches(document.getElementById('clothingSwatches'), sp.clothing);
+    renderSwatches(document.getElementById('makeupSwatches'), sp.makeup);
+
+    document.getElementById('mkFoundation').textContent = sp.foundation;
+    document.getElementById('mkBlush').textContent = sp.blush;
+    document.getElementById('mkLip').textContent = sp.lip;
+    document.getElementById('jewelryText').textContent = sp.jewelry;
 
     const avoidRow = document.getElementById('avoidChips');
     avoidRow.innerHTML = '';
-    p.avoid.forEach(text => {
+    sp.avoid.forEach(text => {
       const chip = document.createElement('div');
       chip.className = 'avoid-chip';
       chip.textContent = text;
       avoidRow.appendChild(chip);
     });
 
-    renderProducts(classification);
-    initLipTry(classification);
-    initClothTry(classification);
+    renderProducts(season);
+    initLipTry(season);
+    initClothTry(season);
 
-    // needle angle: map hue angle range [35..80] to [-80..80] degrees, done by caller
     result.classList.add('show');
   }
 
@@ -1249,9 +1397,34 @@
     const clampedHue = Math.max(30, Math.min(85, hueAngle));
     const needleDeg = ((clampedHue - 30) / (85 - 30)) * 160 - 80;
 
+    // ---- Season (Primavera/Verano/Otoño/Invierno) ----
+    // Classic 4-season model: warm+light = Spring, warm+deep = Autumn,
+    // cool+light = Summer, cool+deep = Winter. Warmth reuses the hue angle;
+    // depth comes from L* (perceived lightness of the sampled skin).
+    const WARM_MID = 55, LIGHT_MID = 58;
+    const isWarmLean = hueAngle >= WARM_MID;
+    const isLightLean = lab.L >= LIGHT_MID;
+
+    let season;
+    if (isWarmLean && isLightLean) season = 'spring';
+    else if (isWarmLean && !isLightLean) season = 'autumn';
+    else if (!isWarmLean && isLightLean) season = 'summer';
+    else season = 'winter';
+
+    const hueDist = Math.abs(hueAngle - WARM_MID);
+    const lightDist = Math.abs(lab.L - LIGHT_MID);
+    const hueConf = Math.min(97, 50 + hueDist * 2.4);
+    const lightConf = Math.min(97, 50 + lightDist * 2.1);
+    const seasonConfidence = Math.round((hueConf + lightConf) / 2);
+
+    // normalized 0..1 position for plotting/reference: 0=frío/profundo, 1=cálido/claro
+    const warmNorm = Math.max(0, Math.min(1, (hueAngle - 30) / (85 - 30)));
+    const lightNorm = Math.max(0, Math.min(1, (lab.L - 35) / (80 - 35)));
+
     return {
       rgb: [Math.round(avgR), Math.round(avgG), Math.round(avgB)],
-      lab, hueAngle, classification, confidence, needleDeg
+      lab, hueAngle, classification, confidence, needleDeg,
+      season, seasonConfidence, warmNorm, lightNorm
     };
   }
 
@@ -1345,7 +1518,7 @@
       stage.classList.add('done');
 
       needle.setAttribute('transform', `rotate(${analysis.needleDeg} 110 116)`);
-      renderResult(analysis.classification, analysis.confidence);
+      renderResult(analysis.classification, analysis.confidence, analysis.season, analysis.seasonConfidence);
 
       result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 1500);
