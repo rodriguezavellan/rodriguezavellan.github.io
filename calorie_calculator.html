@@ -325,7 +325,7 @@
                                     </button>
                                     <button type="button" onclick="setObjective('maintenance')" 
                                         class="activity-badge p-2 rounded-lg border-2 border-slate-700 bg-slate-800 text-slate-300 text-sm font-medium transition active"
-                                        id="objectiveMaintenace">
+                                        id="objectiveMaintenance">
                                         ➡️ Mantener
                                     </button>
                                     <button type="button" onclick="setObjective('surplus')" 
@@ -710,7 +710,7 @@
         function setObjective(objective) {
             state.objective = objective;
             document.getElementById('objectiveDeficit').classList.remove('active');
-            document.getElementById('objectiveMaintenace').classList.remove('active');
+            document.getElementById('objectiveMaintenance').classList.remove('active');
             document.getElementById('objectiveSurplus').classList.remove('active');
             
             const buttonId = `objective${objective.charAt(0).toUpperCase() + objective.slice(1)}`;
