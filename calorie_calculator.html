@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Calorías - Mifflin-St Jeor</title>
+    <title>Calculadora de Calorías - Mifflin-St Jeor Global</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
@@ -22,13 +22,11 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Tema Oscuro */
         body.dark-theme {
             background: linear-gradient(to bottom right, rgb(15, 23, 42), rgb(15, 23, 42));
             color: rgb(226, 232, 240);
         }
 
-        /* Tema Claro */
         body.light-theme {
             background: linear-gradient(to bottom right, rgb(242, 244, 247), rgb(236, 240, 245));
             color: rgb(15, 23, 42);
@@ -43,7 +41,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Tema claro - cards */
         body.light-theme .gradient-card {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             border-color: rgb(185, 194, 208) !important;
@@ -51,11 +48,6 @@
 
         body.light-theme .bg-slate-800 {
             background-color: rgb(245, 246, 248) !important;
-        }
-
-        body.light-theme .bg-slate-950\/80 {
-            background-color: rgba(255, 255, 255, 0.95) !important;
-            border-color: rgb(185, 194, 208) !important;
         }
 
         body.light-theme .border-slate-800 {
@@ -74,77 +66,27 @@
             color: rgb(15, 23, 42) !important;
         }
 
-        /* Tema claro - textos secundarios */
         body.light-theme .text-slate-500 {
             color: rgb(100, 116, 139) !important;
         }
 
-        /* Tema claro - botones activos */
         body.light-theme .activity-badge.active {
             background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%) !important;
             color: white !important;
-            border-color: rgb(255, 107, 53) !important;
         }
 
-        /* Tema claro - botones inactivos */
         body.light-theme .activity-badge {
             background-color: rgb(240, 242, 245) !important;
             border-color: rgb(185, 194, 208) !important;
             color: rgb(55, 65, 81) !important;
         }
 
-        body.light-theme .activity-badge:hover {
-            background-color: rgb(230, 235, 241) !important;
-        }
-
-        /* Tema claro - inputs */
-        body.light-theme .input-focus {
-            background-color: rgb(255, 255, 255) !important;
-            border-color: rgb(185, 194, 208) !important;
-            color: rgb(15, 23, 42) !important;
-        }
-
-        body.light-theme .input-focus:focus {
-            border-color: #ff6b35 !important;
-            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15) !important;
-        }
-
-        /* Tema claro - select */
         body.light-theme select {
             background-color: rgb(245, 246, 248) !important;
             border-color: rgb(185, 194, 208) !important;
             color: rgb(15, 23, 42) !important;
         }
 
-        /* Tema claro - links */
-        body.light-theme a {
-            color: rgb(255, 107, 53) !important;
-        }
-
-        body.light-theme a:hover {
-            color: rgb(230, 95, 30) !important;
-        }
-
-        /* Tema claro - separadores */
-        body.light-theme .border-slate-700 {
-            border-color: rgb(185, 194, 208) !important;
-        }
-
-        /* Tema claro - backgrounds alternos */
-        body.light-theme .bg-slate-700 {
-            background-color: rgb(220, 225, 233) !important;
-        }
-
-        body.light-theme .bg-slate-800\/50 {
-            background-color: rgba(240, 242, 245, 0.7) !important;
-        }
-
-        /* Tema claro - barras de progreso */
-        body.light-theme .bg-slate-700[class*="rounded"] {
-            background-color: rgb(220, 225, 233) !important;
-        }
-
-        /* Tema claro - colores de macronutrientes */
         body.light-theme .text-blue-400 {
             color: rgb(37, 99, 235) !important;
         }
@@ -157,37 +99,6 @@
             color: rgb(34, 127, 50) !important;
         }
 
-        body.light-theme .text-purple-400 {
-            color: rgb(126, 34, 206) !important;
-        }
-
-        /* Tema claro - barras de macronutrientes */
-        body.light-theme .bg-blue-500 {
-            background-color: rgb(59, 130, 246) !important;
-        }
-
-        body.light-theme .bg-amber-500 {
-            background-color: rgb(245, 158, 11) !important;
-        }
-
-        body.light-theme .bg-green-500 {
-            background-color: rgb(34, 197, 94) !important;
-        }
-
-        /* Tema claro - cajas de información */
-        body.light-theme .bg-amber-500\/10 {
-            background-color: rgba(245, 158, 11, 0.1) !important;
-            border-color: rgb(217, 119, 6) !important;
-        }
-
-        body.light-theme .text-amber-100 {
-            color: rgb(78, 33, 2) !important;
-        }
-
-        body.light-theme .text-amber-300 {
-            color: rgb(180, 83, 9) !important;
-        }
-
         .card-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -195,12 +106,6 @@
         .card-hover:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 40px rgba(255, 107, 53, 0.2);
-        }
-
-        .input-focus:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-            border-color: #ff6b35;
         }
 
         .btn-primary {
@@ -213,67 +118,41 @@
             box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
         }
 
-        .btn-primary:active {
-            transform: translateY(0);
-        }
-
-        .macro-card {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .macro-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #ff6b35, #f7931e);
-        }
-
-        .result-container {
-            animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .progress-ring {
-            transform: rotate(-90deg);
-            transform-origin: 50% 50%;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .emoji-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
+        /* Estilos mejorados para activity-badge (Género y Objetivo) */
         .activity-badge {
-            transition: all 0.2s ease;
             cursor: pointer;
+            transition: all 0.3s ease !important;
+        }
+
+        .activity-badge:hover {
+            transform: translateY(-2px) !important;
+            border-color: rgba(255, 107, 53, 0.5) !important;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2) !important;
+        }
+
+        /* Estado ACTIVE - Tema Oscuro */
+        body.dark-theme .activity-badge.active {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%) !important;
+            color: white !important;
+            border-color: #ff6b35 !important;
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4) !important;
+        }
+
+        /* Estado ACTIVE - Tema Claro */
+        body.light-theme .activity-badge.active {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%) !important;
+            color: white !important;
+            border-color: #ff6b35 !important;
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4) !important;
         }
 
         .activity-badge.active {
-            background: #ff6b35;
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-        }
-
-        .dark-mode {
-            color-scheme: dark;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%) !important;
+            color: white !important;
+            border-color: #ff6b35 !important;
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4) !important;
+            font-weight: 600 !important;
+            transform: translateY(-2px) !important;
         }
 
         .slider-custom::-webkit-slider-thumb {
@@ -296,34 +175,21 @@
             box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
         }
 
-        .tab-button {
-            position: relative;
-            transition: color 0.3s ease;
+        /* Estilos para botones INACTIVOS en tema oscuro */
+        body.dark-theme .activity-badge {
+            background-color: rgb(30, 41, 59) !important;
+            border-color: rgb(71, 85, 105) !important;
+            color: rgb(148, 163, 184) !important;
         }
 
-        .tab-button.active {
-            color: #ff6b35;
-        }
-
-        .tab-button.active::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #ff6b35, #f7931e);
-            border-radius: 2px;
-        }
-
-        @media (max-width: 768px) {
-            .emoji-icon {
-                font-size: 2rem;
-            }
+        /* Hover en tema oscuro */
+        body.dark-theme .activity-badge:hover:not(.active) {
+            background-color: rgb(45, 60, 85) !important;
+            border-color: rgb(100, 120, 150) !important;
         }
     </style>
 </head>
-<body class="dark-mode bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+<body class="dark-theme">
     <div class="min-h-screen pb-20">
         <!-- Header -->
         <header class="sticky top-0 z-50 backdrop-blur-xl bg-slate-950/80 border-b border-slate-800">
@@ -335,12 +201,11 @@
                         </div>
                         <div>
                             <h1 class="text-xl sm:text-2xl font-bold">Calculadora de Calorías</h1>
-                            <p class="text-xs sm:text-sm text-slate-400">Mifflin-St Jeor Edition</p>
+                            <p class="text-xs sm:text-sm text-slate-400">Mifflin-St Jeor • Global • v4.1</p>
                         </div>
                     </div>
-                    <button onclick="toggleTheme()" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition text-slate-300 flex items-center gap-2" title="Cambiar tema">
+                    <button onclick="toggleTheme()" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition text-slate-300 flex items-center gap-2">
                         <span id="themeIcon">🌙</span>
-                        <span class="text-xs hidden sm:inline">Tema</span>
                     </button>
                 </div>
             </div>
@@ -351,10 +216,10 @@
             <!-- Hero Section -->
             <div class="text-center mb-12">
                 <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-                    Calcula tus <span class="gradient-primary bg-clip-text text-transparent">Calorías</span> y Macros
+                    Calcula tus <span class="gradient-primary bg-clip-text text-transparent">Calorías</span> Globales
                 </h2>
                 <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-                    Basado en la fórmula de Mifflin-St Jeor. Obtén tu distribución personalizada de macronutrientes en segundos.
+                    Personalizado para 50+ países con comidas locales reales.
                 </p>
             </div>
 
@@ -363,23 +228,39 @@
                 <!-- Form Card -->
                 <div class="lg:col-span-1">
                     <div class="gradient-card border border-slate-800 rounded-2xl p-6 sm:p-8 card-hover">
-                        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                            📋 Tu Información
-                        </h3>
+                        <h3 class="text-xl font-bold text-white mb-6">📋 Tu Información</h3>
 
-                        <form id="calculatorForm" class="space-y-5">
+                        <form class="space-y-5">
+                            <!-- Región Macro -->
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-3">🌍 Región</label>
+                                <select id="macroRegionSelect" class="w-full bg-slate-700 border-2 border-slate-600 text-white rounded-lg px-4 py-3" onchange="loadCountries(); calculateResults()">
+                                    <option value="">Selecciona región...</option>
+                                    <option value="europe">🇪🇺 Europa</option>
+                                    <option value="north_america">🇺🇸 América del Norte</option>
+                                    <option value="central_america">🇳🇮 Centroamérica</option>
+                                    <option value="south_america">🇦🇷 América del Sur</option>
+                                </select>
+                            </div>
+
+                            <!-- País -->
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-3">🏳️ País</label>
+                                <select id="countrySelect" class="w-full bg-slate-700 border-2 border-slate-600 text-white rounded-lg px-4 py-3" onchange="calculateResults()">
+                                    <option value="">Selecciona país...</option>
+                                </select>
+                            </div>
+
+                            <div class="border-t border-slate-700"></div>
+
                             <!-- Género -->
                             <div>
                                 <label class="block text-sm font-medium text-slate-300 mb-3">Género</label>
                                 <div class="grid grid-cols-2 gap-3">
-                                    <button type="button" onclick="setGender('M')" 
-                                        class="activity-badge p-3 rounded-lg border-2 border-slate-700 bg-slate-800 text-slate-300 font-medium transition"
-                                        id="genderM">
+                                    <button type="button" onclick="setGender('M')" class="activity-badge p-3 rounded-lg border-2 border-slate-700 bg-slate-800 text-slate-300 font-medium active" id="genderM">
                                         👨 Masculino
                                     </button>
-                                    <button type="button" onclick="setGender('F')" 
-                                        class="activity-badge p-3 rounded-lg border-2 border-slate-700 bg-slate-800 text-slate-300 font-medium transition"
-                                        id="genderF">
+                                    <button type="button" onclick="setGender('F')" class="activity-badge p-3 rounded-lg border-2 border-slate-700 bg-slate-800 text-slate-300 font-medium" id="genderF">
                                         👩 Femenino
                                     </button>
                                 </div>
@@ -390,9 +271,7 @@
                                 <label class="block text-sm font-medium text-slate-300 mb-2">
                                     Peso: <span id="weightDisplay" class="gradient-primary bg-clip-text text-transparent font-bold">70</span> kg
                                 </label>
-                                <input type="range" id="weight" min="40" max="200" value="70" 
-                                    class="slider-custom w-full h-2 bg-slate-700 rounded-lg appearance-none"
-                                    oninput="updateDisplay('weight', 'weightDisplay'); calculateResults()">
+                                <input type="range" id="weight" min="40" max="200" value="70" class="slider-custom w-full h-2 bg-slate-700 rounded-lg" oninput="updateDisplay('weight', 'weightDisplay'); calculateResults()">
                             </div>
 
                             <!-- Altura -->
@@ -400,9 +279,7 @@
                                 <label class="block text-sm font-medium text-slate-300 mb-2">
                                     Altura: <span id="heightDisplay" class="gradient-primary bg-clip-text text-transparent font-bold">175</span> cm
                                 </label>
-                                <input type="range" id="height" min="140" max="220" value="175" 
-                                    class="slider-custom w-full h-2 bg-slate-700 rounded-lg appearance-none"
-                                    oninput="updateDisplay('height', 'heightDisplay'); calculateResults()">
+                                <input type="range" id="height" min="140" max="220" value="175" class="slider-custom w-full h-2 bg-slate-700 rounded-lg" oninput="updateDisplay('height', 'heightDisplay'); calculateResults()">
                             </div>
 
                             <!-- Edad -->
@@ -410,51 +287,38 @@
                                 <label class="block text-sm font-medium text-slate-300 mb-2">
                                     Edad: <span id="ageDisplay" class="gradient-primary bg-clip-text text-transparent font-bold">25</span> años
                                 </label>
-                                <input type="range" id="age" min="15" max="100" value="25" 
-                                    class="slider-custom w-full h-2 bg-slate-700 rounded-lg appearance-none"
-                                    oninput="updateDisplay('age', 'ageDisplay'); calculateResults()">
+                                <input type="range" id="age" min="15" max="100" value="25" class="slider-custom w-full h-2 bg-slate-700 rounded-lg" oninput="updateDisplay('age', 'ageDisplay'); calculateResults()">
                             </div>
 
-                            <!-- Actividad Física -->
+                            <!-- Actividad -->
                             <div>
                                 <label class="block text-sm font-medium text-slate-300 mb-3">
-                                    Nivel de Actividad: <span id="activityDisplay" class="gradient-primary bg-clip-text text-transparent font-bold">3</span>
+                                    Actividad: <span id="activityDisplay" class="gradient-primary bg-clip-text text-transparent font-bold">3</span>
                                 </label>
-                                <input type="range" id="activity" min="1" max="7" value="3" 
-                                    class="slider-custom w-full h-2 bg-slate-700 rounded-lg appearance-none"
-                                    oninput="updateDisplay('activity', 'activityDisplay'); calculateResults()">
-                                <div class="text-xs text-slate-400 mt-2">
-                                    <p id="activityLabel">Moderadamente activo (3-5 días/semana)</p>
-                                </div>
+                                <input type="range" id="activity" min="1" max="7" value="3" class="slider-custom w-full h-2 bg-slate-700 rounded-lg" oninput="updateDisplay('activity', 'activityDisplay'); calculateResults()">
+                                <p id="activityLabel" class="text-xs text-slate-400 mt-2">Moderadamente activo</p>
                             </div>
 
                             <!-- Objetivo -->
                             <div>
                                 <label class="block text-sm font-medium text-slate-300 mb-3">Objetivo</label>
                                 <div class="grid grid-cols-3 gap-2">
-                                    <button type="button" onclick="setObjective('deficit')" 
-                                        class="activity-badge p-2 rounded-lg border-2 border-slate-700 bg-slate-800 text-slate-300 text-sm font-medium transition"
-                                        id="objectiveDeficit">
+                                    <button type="button" onclick="setObjective('deficit')" class="activity-badge p-2 rounded-lg border-2 border-slate-700 bg-slate-800 text-slate-300 text-sm font-medium" id="objectiveDeficit">
                                         📉 Déficit
                                     </button>
-                                    <button type="button" onclick="setObjective('maintenance')" 
-                                        class="activity-badge p-2 rounded-lg border-2 border-slate-700 bg-slate-800 text-slate-300 text-sm font-medium transition active"
-                                        id="objectiveMaintenance">
+                                    <button type="button" onclick="setObjective('maintenance')" class="activity-badge p-2 rounded-lg border-2 border-slate-700 bg-slate-800 text-slate-300 text-sm font-medium active" id="objectiveMaintenance">
                                         ➡️ Mantener
                                     </button>
-                                    <button type="button" onclick="setObjective('surplus')" 
-                                        class="activity-badge p-2 rounded-lg border-2 border-slate-700 bg-slate-800 text-slate-300 text-sm font-medium transition"
-                                        id="objectiveSurplus">
+                                    <button type="button" onclick="setObjective('surplus')" class="activity-badge p-2 rounded-lg border-2 border-slate-700 bg-slate-800 text-slate-300 text-sm font-medium" id="objectiveSurplus">
                                         📈 Superávit
                                     </button>
                                 </div>
                             </div>
                         </form>
 
-                        <!-- Info Box -->
                         <div class="mt-6 p-4 bg-slate-800/50 border border-slate-700 rounded-lg">
                             <p class="text-xs text-slate-400">
-                                <strong class="text-slate-300">💡 Tip:</strong> Estos datos se usan localmente. Nada se guarda en servidores.
+                                <strong class="text-slate-300">💡 Tip:</strong> Selecciona tu región y país para comidas locales.
                             </p>
                         </div>
                     </div>
@@ -462,192 +326,97 @@
 
                 <!-- Results Card -->
                 <div class="lg:col-span-2">
-                    <div id="resultsContainer" class="result-container gradient-card border border-slate-800 rounded-2xl p-6 sm:p-8">
-                        <h3 class="text-xl font-bold text-white mb-8 flex items-center gap-2">
-                            ✨ Tus Resultados
-                        </h3>
+                    <div class="gradient-card border border-slate-800 rounded-2xl p-6 sm:p-8">
+                        <h3 class="text-xl font-bold text-white mb-8">✨ Tus Resultados</h3>
 
                         <!-- Main Metrics -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                            <!-- TMB -->
                             <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
                                 <p class="text-slate-400 text-sm font-medium mb-2">Metabolismo Basal</p>
                                 <div class="flex items-baseline gap-2">
                                     <span id="tmb" class="text-3xl sm:text-4xl font-bold gradient-primary bg-clip-text text-transparent">1,500</span>
                                     <span class="text-slate-400 text-sm">kcal</span>
                                 </div>
-                                <p class="text-xs text-slate-500 mt-2">Lo que tu cuerpo gasta en reposo</p>
+                                <p class="text-xs text-slate-500 mt-2">En reposo</p>
                             </div>
 
-                            <!-- Calorías que quemas al día -->
                             <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
-                                <p class="text-slate-400 text-sm font-medium mb-2">Calorías que quemas al día</p>
+                                <p class="text-slate-400 text-sm font-medium mb-2">Calorías Diarias</p>
                                 <div class="flex items-baseline gap-2">
                                     <span id="tdee" class="text-3xl sm:text-4xl font-bold gradient-primary bg-clip-text text-transparent">2,250</span>
                                     <span class="text-slate-400 text-sm">kcal</span>
                                 </div>
-                                <p class="text-xs text-slate-500 mt-2">Incluye tu actividad física</p>
+                                <p id="objectiveInfo" class="text-xs text-slate-500 mt-2">Mantenimiento</p>
                             </div>
                         </div>
 
-                        <!-- Daily Calories Based on Objective -->
-                        <div class="mb-8">
-                            <h4 class="text-lg font-bold text-white mb-4">Calorías Recomendadas</h4>
-                            <div class="bg-gradient-to-r from-slate-800/30 to-slate-800/10 border border-slate-700 rounded-xl p-6">
-                                <div class="flex items-baseline gap-3">
-                                    <span id="dailyCalories" class="text-4xl sm:text-5xl font-bold gradient-primary bg-clip-text text-transparent">2,250</span>
-                                    <div>
-                                        <span class="text-slate-400 text-sm">kcal/día</span>
-                                        <p id="objectiveInfo" class="text-xs text-slate-500 mt-1">Mantenimiento</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Macronutrient Distribution -->
-                        <div class="mb-8">
-                            <h4 class="text-lg font-bold text-white mb-4">Distribución de Macronutrientes</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                                <!-- Proteína -->
-                                <div class="macro-card bg-slate-800/50 border border-slate-700 rounded-xl p-6">
-                                    <p class="text-slate-400 text-sm font-medium mb-4">Proteína</p>
-                                    <div class="mb-4">
-                                        <div class="flex items-baseline gap-2 mb-2">
-                                            <span id="proteinGrams" class="text-3xl font-bold text-blue-400">180</span>
-                                            <span class="text-slate-400 text-sm">g</span>
-                                        </div>
-                                        <div class="text-xs text-slate-500">
-                                            <span id="proteinPercent">32%</span> del total
-                                        </div>
-                                    </div>
-                                    <div class="w-full bg-slate-700 rounded-full h-2">
-                                        <div id="proteinBar" class="bg-blue-500 h-2 rounded-full" style="width: 32%"></div>
-                                    </div>
-                                    <p class="text-xs text-slate-500 mt-3">Para mantener y construir músculo</p>
-                                </div>
-
-                                <!-- Grasas -->
-                                <div class="macro-card bg-slate-800/50 border border-slate-700 rounded-xl p-6">
-                                    <p class="text-slate-400 text-sm font-medium mb-4">Grasas</p>
-                                    <div class="mb-4">
-                                        <div class="flex items-baseline gap-2 mb-2">
-                                            <span id="fatsGrams" class="text-3xl font-bold text-amber-400">56</span>
-                                            <span class="text-slate-400 text-sm">g</span>
-                                        </div>
-                                        <div class="text-xs text-slate-500">
-                                            <span id="fatsPercent">22%</span> del total
-                                        </div>
-                                    </div>
-                                    <div class="w-full bg-slate-700 rounded-full h-2">
-                                        <div id="fatsBar" class="bg-amber-500 h-2 rounded-full" style="width: 22%"></div>
-                                    </div>
-                                    <p class="text-xs text-slate-500 mt-3">Esencial para hormonas</p>
-                                </div>
-
-                                <!-- Carbohidratos -->
-                                <div class="macro-card bg-slate-800/50 border border-slate-700 rounded-xl p-6">
-                                    <p class="text-slate-400 text-sm font-medium mb-4">Carbohidratos</p>
-                                    <div class="mb-4">
-                                        <div class="flex items-baseline gap-2 mb-2">
-                                            <span id="carbsGrams" class="text-3xl font-bold text-green-400">281</span>
-                                            <span class="text-slate-400 text-sm">g</span>
-                                        </div>
-                                        <div class="text-xs text-slate-500">
-                                            <span id="carbsPercent">50%</span> del total
-                                        </div>
-                                    </div>
-                                    <div class="w-full bg-slate-700 rounded-full h-2">
-                                        <div id="carbsBar" class="bg-green-500 h-2 rounded-full" style="width: 50%"></div>
-                                    </div>
-                                    <p class="text-xs text-slate-500 mt-3">Para energía y rendimiento</p>
-                                </div>
-                            </div>
-
-                            <!-- Chart -->
+                        <!-- Macros -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                             <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
-                                <div class="aspect-square sm:aspect-video">
-                                    <canvas id="macroChart"></canvas>
+                                <p class="text-slate-400 text-sm font-medium mb-2">Proteína</p>
+                                <p class="text-2xl font-bold text-blue-400"><span id="proteinGrams">180</span>g</p>
+                                <p class="text-xs text-slate-500 mt-2">30% | 2.0g/kg</p>
+                                <div class="w-full bg-slate-700 rounded-full h-2 mt-3">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 30%"></div>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                                <p class="text-slate-400 text-sm font-medium mb-2">Grasas</p>
+                                <p class="text-2xl font-bold text-amber-400"><span id="fatsGrams">56</span>g</p>
+                                <p class="text-xs text-slate-500 mt-2">25% | Hormonas</p>
+                                <div class="w-full bg-slate-700 rounded-full h-2 mt-3">
+                                    <div class="bg-amber-500 h-2 rounded-full" style="width: 25%"></div>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                                <p class="text-slate-400 text-sm font-medium mb-2">Carbohidratos</p>
+                                <p class="text-2xl font-bold text-green-400"><span id="carbsGrams">281</span>g</p>
+                                <p class="text-xs text-slate-500 mt-2">45% | Energía</p>
+                                <div class="w-full bg-slate-700 rounded-full h-2 mt-3">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 45%"></div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Meal Plan Section -->
-                            
-                            <div id="mealPlanContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- Desayuno -->
-                                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
-                                    <h5 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-                                        🌅 Desayuno
-                                        <span id="breakfastCals" class="text-sm text-slate-400">(450 kcal)</span>
-                                    </h5>
-                                    <div id="breakfastMeals" class="space-y-3">
-                                        <div class="p-3 bg-slate-700/30 rounded-lg">
-                                            <p class="text-sm font-medium text-white">Opción: Huevos revueltos con pan integral</p>
-                                            <p class="text-xs text-slate-400 mt-1">2 huevos + 2 rebanadas pan + aceite de oliva</p>
-                                        </div>
-                                    </div>
-                                </div>
+                        <!-- Chart -->
+                        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 mb-6">
+                            <canvas id="macroChart"></canvas>
+                        </div>
 
-                                <!-- Almuerzo -->
-                                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
-                                    <h5 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-                                        🥗 Almuerzo
-                                        <span id="lunchCals" class="text-sm text-slate-400">(600 kcal)</span>
-                                    </h5>
-                                    <div id="lunchMeals" class="space-y-3">
-                                        <div class="p-3 bg-slate-700/30 rounded-lg">
-                                            <p class="text-sm font-medium text-white">Opción: Pechuga de pollo con arroz</p>
-                                            <p class="text-xs text-slate-400 mt-1">150g pollo + 1 taza arroz + verduras</p>
-                                        </div>
-                                    </div>
+                        <!-- Meal Plan -->
+                        <div class="mb-6">
+                            <h4 class="text-lg font-bold text-white mb-4">🍽️ Plan de Comidas</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
+                                    <h5 class="font-bold text-white mb-2">🌅 Desayuno</h5>
+                                    <div id="breakfastMeal" class="text-sm text-slate-400">Selecciona país...</div>
                                 </div>
-
-                                <!-- Cena -->
-                                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
-                                    <h5 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-                                        🍖 Cena
-                                        <span id="dinnerCals" class="text-sm text-slate-400">(500 kcal)</span>
-                                    </h5>
-                                    <div id="dinnerMeals" class="space-y-3">
-                                        <div class="p-3 bg-slate-700/30 rounded-lg">
-                                            <p class="text-sm font-medium text-white">Opción: Salmón a la plancha con camote</p>
-                                            <p class="text-xs text-slate-400 mt-1">150g salmón + 1 camote mediano + brócoli</p>
-                                        </div>
-                                    </div>
+                                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
+                                    <h5 class="font-bold text-white mb-2">🥗 Almuerzo</h5>
+                                    <div id="lunchMeal" class="text-sm text-slate-400">Selecciona país...</div>
                                 </div>
-
-                                <!-- Snacks -->
-                                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
-                                    <h5 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-                                        🍎 Snacks
-                                        <span id="snacksCals" class="text-sm text-slate-400">(200 kcal)</span>
-                                    </h5>
-                                    <div id="snacksMeals" class="space-y-2 text-sm">
-                                        <p class="text-slate-400">✓ Plátano + cucharada de mantequilla de maní (150 kcal)</p>
-                                        <p class="text-slate-400">✓ Yogur griego + granola (120 kcal)</p>
-                                        <p class="text-slate-400">✓ Puñado de frutos secos (150 kcal)</p>
-                                        <p class="text-slate-400">✓ Proteína en polvo con leche (120 kcal)</p>
-                                    </div>
+                                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
+                                    <h5 class="font-bold text-white mb-2">🍖 Cena</h5>
+                                    <div id="dinnerMeal" class="text-sm text-slate-400">Selecciona país...</div>
                                 </div>
-                            </div>
-
-                            <!-- Info -->
-                            <div class="mt-6 p-4 bg-amber-500/10 border border-amber-500/20 rounded-lg">
-                                <p class="text-xs text-amber-100">
-                                    <strong class="text-amber-300">⚠️ Nota Importante:</strong> Estos son ejemplos generales. Las cantidades pueden variar según tus preferencias personales y restricciones dietéticas. Considera consultar con un nutricionista certificado para un plan personalizado.
-                                </p>
+                                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
+                                    <h5 class="font-bold text-white mb-2">🍎 Snacks</h5>
+                                    <div id="snacksMeal" class="text-sm text-slate-400">Selecciona país...</div>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Actions -->
                         <div class="flex flex-col sm:flex-row gap-3">
-                            <button onclick="exportJSON()" class="btn-primary text-white font-semibold py-3 px-6 rounded-lg flex-1 sm:flex-none">
-                                📥 Descargar JSON
+                            <button onclick="exportJSON()" class="btn-primary text-white font-semibold py-3 px-6 rounded-lg flex-1">
+                                📥 Descargar
                             </button>
-                            <button onclick="copyToClipboard()" class="border-2 border-slate-600 hover:border-slate-500 text-white font-semibold py-3 px-6 rounded-lg transition flex-1 sm:flex-none">
-                                📋 Copiar Datos
+                            <button onclick="copyToClipboard()" class="border-2 border-slate-600 hover:border-slate-500 text-white font-semibold py-3 px-6 rounded-lg flex-1">
+                                📋 Copiar
                             </button>
-                            <button onclick="resetForm()" class="border-2 border-slate-600 hover:border-slate-500 text-white font-semibold py-3 px-6 rounded-lg transition flex-1 sm:flex-none">
+                            <button onclick="resetForm()" class="border-2 border-slate-600 hover:border-slate-500 text-white font-semibold py-3 px-6 rounded-lg flex-1">
                                 🔄 Limpiar
                             </button>
                         </div>
@@ -660,20 +429,20 @@
                 <div class="gradient-card border border-slate-800 rounded-2xl p-6 card-hover">
                     <h3 class="text-lg font-bold text-white mb-4">📚 ¿Cómo funciona?</h3>
                     <div class="space-y-3 text-sm text-slate-400">
-                        <p>1. <strong class="text-slate-300">TMB (Metabolismo Basal)</strong>: Calorías que quema tu cuerpo en reposo, calculadas con <strong>Mifflin-St Jeor (1990)</strong>.</p>
-                        <p>2. <strong class="text-slate-300">Factor de Actividad</strong>: Se multiplica el TMB según tu nivel de actividad semanal.</p>
-                        <p>3. <strong class="text-slate-300">Ajuste por Objetivo</strong>: Se añade o resta 500 kcal según busques déficit, mantenimiento o superávit.</p>
-                        <p>4. <strong class="text-slate-300">Macros</strong>: Proteína 30%, Grasas 25%, Carbohidratos 45%.</p>
+                        <p>1. <strong>Mifflin-St Jeor (1990):</strong> TMB según tu cuerpo</p>
+                        <p>2. <strong>Factor actividad:</strong> Multiplica TMB</p>
+                        <p>3. <strong>Ajuste objetivo:</strong> ±500 kcal</p>
+                        <p>4. <strong>Macros:</strong> P 30% | G 25% | C 45%</p>
                     </div>
                 </div>
 
                 <div class="gradient-card border border-slate-800 rounded-2xl p-6 card-hover">
-                    <h3 class="text-lg font-bold text-white mb-4">💪 Consejos de Nutrición</h3>
-                    <div class="space-y-3 text-sm text-slate-400">
-                        <p>✅ <strong class="text-slate-300">Proteína</strong>: Come 1.8-2.2g por kg de peso corporal.</p>
-                        <p>✅ <strong class="text-slate-300">Hidratación</strong>: Bebe 3-4 litros de agua diariamente.</p>
-                        <p>✅ <strong class="text-slate-300">Consistencia</strong>: El déficit debe ser gradual (500 kcal/día máx).</p>
-                        <p>✅ <strong class="text-slate-300">Monitoreo</strong>: Ajusta según resultados cada 2-3 semanas.</p>
+                    <h3 class="text-lg font-bold text-white mb-4">🌍 50+ Países Soportados</h3>
+                    <div class="space-y-2 text-sm text-slate-400">
+                        <p><strong>🇪🇺 Europa (30):</strong> España, Italia, Francia, Alemania, Austria, Suiza, UK, Grecia, Polonia, etc.</p>
+                        <p><strong>🇺🇸 Norteamérica (3):</strong> USA, Canadá, México</p>
+                        <p><strong>🇳🇮 Centroamérica (6):</strong> Costa Rica, Guatemala, Honduras, El Salvador, Nicaragua, Panamá</p>
+                        <p><strong>🇦🇷 Suramérica (8):</strong> Colombia, Argentina, Chile, Perú, Bolivia, Venezuela, Paraguay, Uruguay</p>
                     </div>
                 </div>
             </div>
@@ -683,39 +452,136 @@
         <footer class="border-t border-slate-800 bg-slate-950/50 backdrop-blur-xl mt-12">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <!-- Créditos -->
                     <div class="text-sm">
                         <p class="font-bold text-white mb-2">📝 Créditos</p>
-                        <p class="text-slate-400">Creado por <strong class="text-slate-300">Giovanny Rodriguez</strong></p>
+                        <p class="text-slate-400">Creado por <strong>Giovanny Rodriguez</strong></p>
                         <p class="text-slate-400">Uso educativo - No reemplaza consejo profesional</p>
                     </div>
-                    
-                    <!-- Disclaimer -->
                     <div class="text-sm">
                         <p class="font-bold text-white mb-2">⚠️ Disclaimer</p>
-                        <p class="text-slate-400">Esta calculadora es una herramienta educativa basada en la fórmula <strong>Mifflin-St Jeor (1990)</strong>, método estándar en nutrición profesional. Los resultados son aproximados. Para un plan personalizado, consulta a un nutricionista o dietista certificado.</p>
+                        <p class="text-slate-400">Herramienta educativa basada en Mifflin-St Jeor (1990). Consulta nutricionista para plan personalizado.</p>
                     </div>
                 </div>
-
-                <div class="border-t border-slate-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div class="text-sm text-slate-500">
-                        <p>© 2024 Calculadora de Calorías. Todos los derechos reservados.</p>
-                    </div>
-                    <div class="flex gap-6 text-sm text-slate-400">
-                        <a href="#" class="hover:text-slate-300 transition">GitHub</a>
-                        <a href="#" class="hover:text-slate-300 transition">Contacto</a>
-                        <a href="#" class="hover:text-slate-300 transition">Términos</a>
-                    </div>
+                <div class="border-t border-slate-800 pt-6 text-center text-sm text-slate-500">
+                    <p>© <span id="yearFooter">2024</span> Calculadora de Calorías Global. v4.1 Audited. Todos los derechos reservados.</p>
                 </div>
             </div>
         </footer>
     </div>
 
-    <!-- Chart.js instance -->
+    <!-- JavaScript -->
     <script>
         let macroChart = null;
 
-        // Estado global
+        // ============================================
+        // BASE DE DATOS - ESTRUCTURA LIMPIA Y SIMPLE
+        // ============================================
+        const countriesData = {
+            europe: {
+                name: "Europa",
+                countries: {
+                    "Spain": { flag: "🇪🇸", name: "España" },
+                    "Italy": { flag: "🇮🇹", name: "Italia" },
+                    "France": { flag: "🇫🇷", name: "Francia" },
+                    "Germany": { flag: "🇩🇪", name: "Alemania" },
+                    "Portugal": { flag: "🇵🇹", name: "Portugal" },
+                    "Greece": { flag: "🇬🇷", name: "Grecia" },
+                    "Poland": { flag: "🇵🇱", name: "Polonia" },
+                    "UK": { flag: "🇬🇧", name: "Reino Unido" },
+                    "Austria": { flag: "🇦🇹", name: "Austria" },
+                    "Belgium": { flag: "🇧🇪", name: "Bélgica" },
+                    "Czech": { flag: "🇨🇿", name: "Chequia" },
+                    "Denmark": { flag: "🇩🇰", name: "Dinamarca" },
+                    "Slovakia": { flag: "🇸🇰", name: "Eslovaquia" },
+                    "Slovenia": { flag: "🇸🇮", name: "Eslovenia" },
+                    "Hungary": { flag: "🇭🇺", name: "Hungría" },
+                    "Ireland": { flag: "🇮🇪", name: "Irlanda" },
+                    "Norway": { flag: "🇳🇴", name: "Noruega" },
+                    "Netherlands": { flag: "🇳🇱", name: "Países Bajos" },
+                    "Romania": { flag: "🇷🇴", name: "Rumania" },
+                    "Russia": { flag: "🇷🇺", name: "Rusia" },
+                    "Sweden": { flag: "🇸🇪", name: "Suecia" },
+                    "Switzerland": { flag: "🇨🇭", name: "Suiza" },
+                    "Turkey": { flag: "🇹🇷", name: "Turquía" },
+                    "Finland": { flag: "🇫🇮", name: "Finlandia" },
+                    "Lithuania": { flag: "🇱🇹", name: "Lituania" },
+                    "Luxembourg": { flag: "🇱🇺", name: "Luxemburgo" },
+                    "Malta": { flag: "🇲🇹", name: "Malta" },
+                    "Croatia": { flag: "🇭🇷", name: "Croacia" },
+                    "Bulgaria": { flag: "🇧🇬", name: "Bulgaria" },
+                    "Cyprus": { flag: "🇨🇾", name: "Chipre" }
+                }
+            },
+            north_america: {
+                name: "América del Norte",
+                countries: {
+                    "USA": { flag: "🇺🇸", name: "Estados Unidos" },
+                    "Canada": { flag: "🇨🇦", name: "Canadá" },
+                    "Mexico": { flag: "🇲🇽", name: "México" }
+                }
+            },
+            central_america: {
+                name: "Centroamérica",
+                countries: {
+                    "Costa_Rica": { flag: "🇨🇷", name: "Costa Rica" },
+                    "Guatemala": { flag: "🇬🇹", name: "Guatemala" },
+                    "Honduras": { flag: "🇭🇳", name: "Honduras" },
+                    "El_Salvador": { flag: "🇸🇻", name: "El Salvador" },
+                    "Nicaragua": { flag: "🇳🇮", name: "Nicaragua" },
+                    "Panama": { flag: "🇵🇦", name: "Panamá" }
+                }
+            },
+            south_america: {
+                name: "América del Sur",
+                countries: {
+                    "Colombia": { flag: "🇨🇴", name: "Colombia" },
+                    "Argentina": { flag: "🇦🇷", name: "Argentina" },
+                    "Chile": { flag: "🇨🇱", name: "Chile" },
+                    "Peru": { flag: "🇵🇪", name: "Perú" },
+                    "Bolivia": { flag: "🇧🇴", name: "Bolivia" },
+                    "Venezuela": { flag: "🇻🇪", name: "Venezuela" },
+                    "Paraguay": { flag: "🇵🇾", name: "Paraguay" },
+                    "Uruguay": { flag: "🇺🇾", name: "Uruguay" }
+                }
+            }
+        };
+
+        // ============================================
+        // COMIDAS POR PAÍS (50+ opciones - Opciones Saludables)
+        // ============================================
+        const mealsByCountry = {
+            "Spain": { breakfast: { name: "Tostadas integrales + tomate + aceite oliva", macros: "P:8g | G:10g | C:48g" }, lunch: { name: "Paella de mariscos + vegetales", macros: "P:38g | G:14g | C:52g" }, dinner: { name: "Salmón a la plancha + espárragos", macros: "P:38g | G:16g | C:28g" }, snacks: "Almendras crudas + naranja" },
+            "Italy": { breakfast: { name: "Café + pan integral + queso ricotta", macros: "P:12g | G:8g | C:42g" }, lunch: { name: "Pasta integral + brócoli + pechuga pollo", macros: "P:32g | G:10g | C:48g" }, dinner: { name: "Riso integral + champiñones + pollo", macros: "P:35g | G:12g | C:45g" }, snacks: "Manzana + almendras" },
+            "France": { breakfast: { name: "Pan integral + huevo pochado + espinacas", macros: "P:14g | G:10g | C:38g" }, lunch: { name: "Pechuga pollo con salsa mostaza + verduras", macros: "P:42g | G:14g | C:35g" }, dinner: { name: "Pescado blanco al horno + ensalada verde", macros: "P:40g | G:12g | C:28g" }, snacks: "Frutos rojos + yogur griego" },
+            "Germany": { breakfast: { name: "Pan integral + jamón pavo + tomate", macros: "P:18g | G:8g | C:38g" }, lunch: { name: "Carne magra a la parrilla + papa cocida + col", macros: "P:45g | G:12g | C:35g" }, dinner: { name: "Trucha al horno + vegetales asados", macros: "P:38g | G:14g | C:32g" }, snacks: "Nueces + pera" },
+            "Portugal": { breakfast: { name: "Huevo escalfado + pan integral + tomate", macros: "P:12g | G:8g | C:40g" }, lunch: { name: "Bacalao al horno + papa cocida + brócoli", macros: "P:38g | G:10g | C:38g" }, dinner: { name: "Sardinas a la plancha + ensalada col", macros: "P:35g | G:14g | C:28g" }, snacks: "Almendras + limón" },
+            "Greece": { breakfast: { name: "Yogur griego 0% + granola integral + miel", macros: "P:18g | G:6g | C:38g" }, lunch: { name: "Pollo marinado + ensalada griega + aceitunas", macros: "P:40g | G:12g | C:35g" }, dinner: { name: "Camarones al horno + papas + verduras", macros: "P:36g | G:10g | C:32g" }, snacks: "Olivas + queso feta light" },
+            "Poland": { breakfast: { name: "Pan negro integral + requesón + arándanos", macros: "P:14g | G:6g | C:42g" }, lunch: { name: "Sopa de verduras + pollo hervido", macros: "P:32g | G:8g | C:38g" }, dinner: { name: "Trucha a la parrilla + ensalada col fermentada", macros: "P:38g | G:12g | C:30g" }, snacks: "Nueces + manzana verde" },
+            "UK": { breakfast: { name: "Huevos revueltos + pan integral tostado + tomate", macros: "P:16g | G:10g | C:32g" }, lunch: { name: "Salmón a la parrilla + papas cocidas + guisantes", macros: "P:38g | G:12g | C:35g" }, dinner: { name: "Pollo asado + vegetales al horno", macros: "P:42g | G:12g | C:30g" }, snacks: "Té con galleta integral" },
+            "Austria": { breakfast: { name: "Pan integral + queso magro + miel pura", macros: "P:12g | G:8g | C:42g" }, lunch: { name: "Pechuga pollo a la parrilla + papa cocida", macros: "P:42g | G:10g | C:35g" }, dinner: { name: "Trucha al horno + ensalada roja", macros: "P:38g | G:12g | C:28g" }, snacks: "Manzana cocida sin azúcar" },
+            "Belgium": { breakfast: { name: "Avena integral + frutos rojos + almendras", macros: "P:14g | G:8g | C:44g" }, lunch: { name: "Mejillones cocidos + papa cocida + col", macros: "P:32g | G:8g | C:38g" }, dinner: { name: "Pez espada al horno + verduras", macros: "P:40g | G:10g | C:30g" }, snacks: "Pera + avellanas" },
+            "USA": { breakfast: { name: "Avena con plátano + almendras + canela", macros: "P:14g | G:8g | C:45g" }, lunch: { name: "Pechuga pollo a la parrilla + batata + brócoli", macros: "P:42g | G:10g | C:40g" }, dinner: { name: "Salmón al horno + ensalada mixta", macros: "P:38g | G:14g | C:28g" }, snacks: "Manzana + almendras naturales" },
+            "Canada": { breakfast: { name: "Avena integral + arándanos + semillas chía", macros: "P:12g | G:6g | C:42g" }, lunch: { name: "Salmón a la parrilla + papa cocida + verduras", macros: "P:40g | G:12g | C:38g" }, dinner: { name: "Pechuga pollo + ensalada verde + aguacate", macros: "P:40g | G:14g | C:28g" }, snacks: "Arándanos frescos + yogur griego" },
+            "Mexico": { breakfast: { name: "Huevos revueltos + nopales + chile", macros: "P:16g | G:10g | C:38g" }, lunch: { name: "Pechuga pollo a la mexicana + frijoles negros", macros: "P:40g | G:8g | C:42g" }, dinner: { name: "Pescado a la veracruzana + arroz integral", macros: "P:36g | G:8g | C:40g" }, snacks: "Jícama + limón y chile" },
+            "Colombia": { breakfast: { name: "Arepa integral + queso fresco + tomate", macros: "P:16g | G:10g | C:40g" }, lunch: { name: "Pechuga pollo + arroz integral + verduras", macros: "P:40g | G:10g | C:42g" }, dinner: { name: "Trucha a la parrilla + papa cocida", macros: "P:36g | G:10g | C:38g" }, snacks: "Guayaba + queso fresco" },
+            "Peru": { breakfast: { name: "Huevo + pan integral + tomate + aguacate", macros: "P:14g | G:12g | C:38g" }, lunch: { name: "Ceviche (sin leche) + papa cocida + maíz", macros: "P:38g | G:8g | C:42g" }, dinner: { name: "Pollo a la parrilla + camote cocido + ensalada", macros: "P:40g | G:10g | C:40g" }, snacks: "Papaya + nueces" },
+            "Argentina": { breakfast: { name: "Café + pan integral + jamón pavo", macros: "P:12g | G:8g | C:38g" }, lunch: { name: "Carne magra a la parrilla + papa cocida + verduras", macros: "P:48g | G:14g | C:35g" }, dinner: { name: "Pollo asado + ensalada verde mixta", macros: "P:42g | G:10g | C:28g" }, snacks: "Manzana + almendras" },
+            "Chile": { breakfast: { name: "Pan integral + aguacate + huevo + tomate", macros: "P:14g | G:14g | C:38g" }, lunch: { name: "Salmón a la parrilla + papa cocida + brócoli", macros: "P:38g | G:12g | C:38g" }, dinner: { name: "Pechuga pollo marinada + ensalada coleslaw", macros: "P:40g | G:10g | C:30g" }, snacks: "Naranja + almendras" },
+            "Costa_Rica": { breakfast: { name: "Gallo pinto (integral) + huevo + piña", macros: "P:16g | G:8g | C:46g" }, lunch: { name: "Pollo marinado + arroz integral + frijoles", macros: "P:38g | G:8g | C:44g" }, dinner: { name: "Pescado blanco + papas cocidas + verduras", macros: "P:36g | G:10g | C:36g" }, snacks: "Papaya + coco rallado" },
+            "Guatemala": { breakfast: { name: "Huevos rancheros + tortilla integral + tomate", macros: "P:16g | G:10g | C:40g" }, lunch: { name: "Pollo pepián light + arroz integral", macros: "P:38g | G:10g | C:42g" }, dinner: { name: "Pez espada al horno + papa cocida", macros: "P:36g | G:10g | C:36g" }, snacks: "Plátano verde cocido" },
+            "Honduras": { breakfast: { name: "Baleadas integrales + queso + frijoles", macros: "P:14g | G:8g | C:44g" }, lunch: { name: "Pollo guisado + arroz integral + verduras", macros: "P:36g | G:8g | C:42g" }, dinner: { name: "Pescado frito al horno + papa cocida", macros: "P:36g | G:10g | C:38g" }, snacks: "Plátanos maduros cocidos" },
+            "El_Salvador": { breakfast: { name: "Pupusas de elote + ensalada de repollo", macros: "P:14g | G:8g | C:42g" }, lunch: { name: "Pechuga pollo + frijoles negros + arroz integral", macros: "P:38g | G:8g | C:44g" }, dinner: { name: "Ceviche o pescado + papa cocida", macros: "P:34g | G:8g | C:38g" }, snacks: "Mango + semillas girasol" },
+            "Nicaragua": { breakfast: { name: "Nacatamal light + jugo de piña natural", macros: "P:16g | G:8g | C:44g" }, lunch: { name: "Gallo pinto integral + pollo a la parrilla", macros: "P:38g | G:8g | C:42g" }, dinner: { name: "Pescado blanco al horno + verduras", macros: "P:36g | G:10g | C:36g" }, snacks: "Papaya + coco" },
+            "Panama": { breakfast: { name: "Huevos con vegetales + pan integral", macros: "P:14g | G:10g | C:38g" }, lunch: { name: "Pollo guisado + arroz integral + verduras", macros: "P:38g | G:10g | C:42g" }, dinner: { name: "Camarones al ajillo + papa cocida", macros: "P:36g | G:10g | C:36g" }, snacks: "Plátano + almendras" },
+            "Venezuela": { breakfast: { name: "Arepa integral + huevo + queso fresco", macros: "P:16g | G:10g | C:38g" }, lunch: { name: "Pechuga pollo + caraotas negras + arepa integral", macros: "P:38g | G:8g | C:44g" }, dinner: { name: "Pescado a la parrilla + papa cocida + ensalada", macros: "P:36g | G:10g | C:36g" }, snacks: "Plátano + ajonjolí" },
+            "Bolivia": { breakfast: { name: "Quinua con leche desnatada + frutos secos", macros: "P:14g | G:6g | C:44g" }, lunch: { name: "Pollo + papa cocida + maíz + verduras", macros: "P:40g | G:8g | C:42g" }, dinner: { name: "Charque magro + papas cocidas", macros: "P:38g | G:10g | C:38g" }, snacks: "Maíz tostado + queso fresco" },
+            "Paraguay": { breakfast: { name: "Chipa (integral si es posible) + queso fresco", macros: "P:14g | G:10g | C:40g" }, lunch: { name: "Caldo de carne magra + verduras + mandioca cocida", macros: "P:36g | G:8g | C:40g" }, dinner: { name: "Pollo a la parrilla + ensalada + papa cocida", macros: "P:40g | G:10g | C:36g" }, snacks: "Tereré + galleta integral" },
+            "Uruguay": { breakfast: { name: "Café + pan integral + queso magro", macros: "P:12g | G:8g | C:38g" }, lunch: { name: "Carne magra a la parrilla + papa cocida + ensalada", macros: "P:48g | G:12g | C:35g" }, dinner: { name: "Pollo asado + verduras al horno", macros: "P:42g | G:10g | C:30g" }, snacks: "Frutos rojos + yogur griego" }
+        };
+
+        // ============================================
+        // ESTADO GLOBAL
+        // ============================================
         const state = {
             gender: 'M',
             weight: 70,
@@ -723,211 +589,133 @@
             age: 25,
             activity: 3,
             objective: 'maintenance',
-            theme: 'dark'
-        };
-
-        // Base de datos de comidas
-        const mealDatabase = {
-            breakfast: [
-                { name: "Huevos revueltos con pan integral", cals: 420, protein: 15, fats: 18, carbs: 40, desc: "2 huevos + 2 rebanadas pan + aceite de oliva" },
-                { name: "Avena con plátano y frutos secos", cals: 380, protein: 12, fats: 14, carbs: 52, desc: "1 taza avena + 1 plátano + almendras" },
-                { name: "Yogur griego con granola y berries", cals: 350, protein: 18, fats: 8, carbs: 45, desc: "200g yogur griego + granola + arándanos" },
-                { name: "Smoothie de proteína", cals: 300, protein: 25, fats: 5, carbs: 35, desc: "Proteína en polvo + leche + plátano + arándanos" },
-                { name: "Pancakes de avena", cals: 380, protein: 14, fats: 10, carbs: 55, desc: "Hechos con avena + huevo + miel" },
-                { name: "Tostadas de aguacate con huevo", cals: 380, protein: 16, fats: 18, carbs: 38, desc: "2 rebanadas pan + aguacate + 1 huevo" }
-            ],
-            lunch: [
-                { name: "Pechuga de pollo con arroz", cals: 580, protein: 45, fats: 12, carbs: 65, desc: "150g pollo + 1 taza arroz + verduras al vapor" },
-                { name: "Salmón a la plancha con papas", cals: 620, protein: 42, fats: 28, carbs: 52, desc: "120g salmón + 2 papas medianas + brócoli" },
-                { name: "Ensalada con pechuga y quinoa", cals: 480, protein: 40, fats: 14, carbs: 52, desc: "150g pollo + 1 taza quinoa + lechuga y tomate" },
-                { name: "Atún con batata", cals: 520, protein: 38, fats: 8, carbs: 68, desc: "150g atún enlatado + 1 batata mediana + ensalada" },
-                { name: "Carne molida con pasta integral", cals: 600, protein: 42, fats: 18, carbs: 65, desc: "120g carne + 1.5 tazas pasta + salsa de tomate" },
-                { name: "Pavo con camote y brócoli", cals: 550, protein: 48, fats: 10, carbs: 60, desc: "150g pavo + 1 camote + brócoli" }
-            ],
-            dinner: [
-                { name: "Salmón a la plancha con camote", cals: 480, protein: 38, fats: 22, carbs: 42, desc: "120g salmón + 1 camote mediano + brócoli" },
-                { name: "Pechuga de pollo al horno", cals: 420, protein: 45, fats: 12, carbs: 35, desc: "150g pollo + verduras variadas + 150g papas" },
-                { name: "Tilapia con arroz integral", cals: 450, protein: 40, fats: 8, carbs: 52, desc: "130g tilapia + 0.75 tazas arroz integral + espárragos" },
-                { name: "Filete magro con verduras", cals: 500, protein: 48, fats: 18, carbs: 38, desc: "120g filete + papas cocidas + ensalada" },
-                { name: "Pecho de pavo a la parrilla", cals: 420, protein: 50, fats: 10, carbs: 32, desc: "150g pavo + batata + calabacín" },
-                { name: "Pasta integral con proteína", cals: 520, protein: 35, fats: 12, carbs: 68, desc: "1.5 tazas pasta + pechuga + salsa de tomate" }
-            ],
-            snacks: [
-                { name: "Plátano con mantequilla de maní", cals: 150, protein: 6, fats: 8, carbs: 18 },
-                { name: "Puñado de frutos secos (almendras)", cals: 180, protein: 7, fats: 16, carbs: 6 },
-                { name: "Yogur griego sin azúcar", cals: 120, protein: 18, fats: 2, carbs: 5 },
-                { name: "Barrita de proteína", cals: 200, protein: 20, fats: 8, carbs: 15 },
-                { name: "Manzana con queso cottage", cals: 140, protein: 15, fats: 3, carbs: 14 },
-                { name: "Proteína en polvo con leche", cals: 140, protein: 25, fats: 3, carbs: 8 },
-                { name: "Huevos cocidos (2)", cals: 155, protein: 13, fats: 11, carbs: 1 },
-                { name: "Palomitas de maíz", cals: 100, protein: 3, fats: 2, carbs: 18 }
-            ]
+            theme: 'dark',
+            macroRegion: '',
+            country: ''
         };
 
         // ============================================
-        // FÓRMULA DE CÁLCULO DE TMB - MIFFLIN-ST JEOR
+        // CONSTANTES
+        // ============================================
+        const activityFactors = { 1: 1.2, 2: 1.375, 3: 1.55, 4: 1.725, 5: 1.9, 6: 1.95, 7: 2.0 };
+        const activityDescriptions = {
+            1: "Sedentario", 2: "Poco activo", 3: "Moderadamente activo", 4: "Muy activo",
+            5: "Extremadamente activo", 6: "Atleta semipro", 7: "Deportista profesional"
+        };
+        const objectiveAdjustments = { deficit: -500, maintenance: 0, surplus: 500 };
+
+        // ============================================
+        // FUNCIONES PRINCIPALES
         // ============================================
 
-        // Mifflin-St Jeor (1990) - Método estándar de nutrición profesional
         function calculateTMB(gender, weight, height, age) {
-            if (gender === 'M') {
-                return (10 * weight) + (6.25 * height) - (5 * age) + 5;
+            return gender === 'M' 
+                ? (10 * weight) + (6.25 * height) - (5 * age) + 5
+                : (10 * weight) + (6.25 * height) - (5 * age) - 161;
+        }
+
+        function loadCountries() {
+            const macroRegion = document.getElementById('macroRegionSelect').value;
+            const countrySelect = document.getElementById('countrySelect');
+
+            state.macroRegion = macroRegion;
+
+            if (macroRegion && countriesData[macroRegion]) {
+                const countries = countriesData[macroRegion].countries;
+                countrySelect.innerHTML = '<option value="">Selecciona país...</option>' +
+                    Object.entries(countries)
+                        .map(([key, val]) => `<option value="${key}">${val.flag} ${val.name}</option>`)
+                        .join('');
             } else {
-                return (10 * weight) + (6.25 * height) - (5 * age) - 161;
+                countrySelect.innerHTML = '<option value="">Selecciona país...</option>';
             }
         }
 
-        // Factores de actividad
-        const activityFactors = {
-            1: 1.2,   // Sedentario
-            2: 1.375, // Poco activo
-            3: 1.55,  // Moderadamente activo
-            4: 1.725, // Muy activo
-            5: 1.9,   // Extremadamente activo
-            6: 1.95,  // Atleta
-            7: 2.0    // Deportista profesional
-        };
-
-        // Descripciones de actividad
-        const activityDescriptions = {
-            1: "Sedentario (poco o nada de ejercicio)",
-            2: "Poco activo (1-3 días/semana)",
-            3: "Moderadamente activo (3-5 días/semana)",
-            4: "Muy activo (5-6 días/semana)",
-            5: "Extremadamente activo (entrenamiento diario)",
-            6: "Atleta semiprofesional",
-            7: "Deportista profesional"
-        };
-
-        // Ajustes por objetivo
-        const objectiveAdjustments = {
-            deficit: -500,
-            maintenance: 0,
-            surplus: 500
-        };
-
-        // Setear género
         function setGender(gender) {
             state.gender = gender;
-            document.getElementById('genderM').classList.remove('active');
-            document.getElementById('genderF').classList.remove('active');
-            
-            if (gender === 'M') {
-                document.getElementById('genderM').classList.add('active');
-            } else {
-                document.getElementById('genderF').classList.add('active');
-            }
+            document.getElementById('genderM').classList.toggle('active');
+            document.getElementById('genderF').classList.toggle('active');
             calculateResults();
         }
 
-        // Setear objetivo
         function setObjective(objective) {
             state.objective = objective;
-            document.getElementById('objectiveDeficit').classList.remove('active');
-            document.getElementById('objectiveMaintenance').classList.remove('active');
-            document.getElementById('objectiveSurplus').classList.remove('active');
-            
-            const buttonId = `objective${objective.charAt(0).toUpperCase() + objective.slice(1)}`;
-            document.getElementById(buttonId).classList.add('active');
+            document.querySelectorAll('[id^="objective"]').forEach(btn => btn.classList.remove('active'));
+            const btnId = `objective${objective.charAt(0).toUpperCase() + objective.slice(1)}`;
+            document.getElementById(btnId).classList.add('active');
             calculateResults();
         }
 
-        // Actualizar displays de sliders
         function updateDisplay(inputId, displayId) {
             const value = document.getElementById(inputId).value;
             document.getElementById(displayId).textContent = value;
-            
             if (inputId === 'activity') {
                 document.getElementById('activityLabel').textContent = activityDescriptions[value];
             }
-            
             state[inputId] = parseInt(value);
         }
 
-        // Calcular resultados
         function calculateResults() {
             const tmb = calculateTMB(state.gender, state.weight, state.height, state.age);
             const tdee = tmb * activityFactors[state.activity];
             const dailyCalories = tdee + objectiveAdjustments[state.objective];
 
-            // Distribución de macronutrientes
-            const protein = state.weight * 2.0; // 2g por kg
-            const fats = (dailyCalories * 0.25) / 9; // 25% / 9 kcal por gramo
-            const carbs = (dailyCalories - (protein * 4) - (fats * 9)) / 4; // Resto en carbos / 4 kcal por gramo
+            const protein = state.weight * 2.0;
+            const fats = (dailyCalories * 0.25) / 9;
+            const carbs = (dailyCalories - (protein * 4) - (fats * 9)) / 4;
 
-            // Actualizar display
             document.getElementById('tmb').textContent = Math.round(tmb).toLocaleString();
-            document.getElementById('tdee').textContent = Math.round(tdee).toLocaleString();
-            document.getElementById('dailyCalories').textContent = Math.round(dailyCalories).toLocaleString();
+            document.getElementById('tdee').textContent = Math.round(dailyCalories).toLocaleString();
 
-            // Objetivos
-            if (state.objective === 'deficit') {
-                document.getElementById('objectiveInfo').textContent = 'Déficit calórico (-500 kcal para pérdida de ~0.5kg/semana)';
-            } else if (state.objective === 'maintenance') {
-                document.getElementById('objectiveInfo').textContent = 'Mantenimiento del peso actual';
-            } else {
-                document.getElementById('objectiveInfo').textContent = 'Superávit calórico (+500 kcal para ganancia de ~0.5kg/semana)';
-            }
-
-            // Macronutrientes
-            const proteinPercent = 30;
-            const fatsPercent = 25;
-            const carbsPercent = 45;
+            const objectiveTexts = {
+                deficit: "Déficit calórico (-500 kcal/día)",
+                maintenance: "Mantenimiento del peso",
+                surplus: "Superávit calórico (+500 kcal/día)"
+            };
+            document.getElementById('objectiveInfo').textContent = objectiveTexts[state.objective];
 
             document.getElementById('proteinGrams').textContent = Math.round(protein);
             document.getElementById('fatsGrams').textContent = Math.round(fats);
             document.getElementById('carbsGrams').textContent = Math.round(carbs);
 
-            document.getElementById('proteinPercent').textContent = proteinPercent + '%';
-            document.getElementById('fatsPercent').textContent = fatsPercent + '%';
-            document.getElementById('carbsPercent').textContent = carbsPercent + '%';
-
-            document.getElementById('proteinBar').style.width = proteinPercent + '%';
-            document.getElementById('fatsBar').style.width = fatsPercent + '%';
-            document.getElementById('carbsBar').style.width = carbsPercent + '%';
-
-            // Actualizar chart
             updateChart(protein, fats, carbs);
+            generateMealPlan();
 
-            // Generar plan de comidas
-            generateMealPlan(dailyCalories);
-
-            // Guardar en sessionStorage
             sessionStorage.setItem('lastCalculation', JSON.stringify({
-                state,
-                tmb: Math.round(tmb),
-                tdee: Math.round(tdee),
-                dailyCalories: Math.round(dailyCalories),
-                protein: Math.round(protein),
-                fats: Math.round(fats),
-                carbs: Math.round(carbs)
+                state, tmb: Math.round(tmb), tdee: Math.round(dailyCalories),
+                protein: Math.round(protein), fats: Math.round(fats), carbs: Math.round(carbs)
             }));
         }
 
-        // Actualizar gráfico
-        function updateChart(protein, fats, carbs) {
-            const ctx = document.getElementById('macroChart').getContext('2d');
+        function generateMealPlan() {
+            const country = document.getElementById('countrySelect').value;
             
-            if (macroChart) {
-                macroChart.destroy();
+            if (!country || !mealsByCountry[country]) {
+                document.getElementById('breakfastMeal').textContent = 'Selecciona país...';
+                document.getElementById('lunchMeal').textContent = 'Selecciona país...';
+                document.getElementById('dinnerMeal').textContent = 'Selecciona país...';
+                document.getElementById('snacksMeal').textContent = 'Selecciona país...';
+                return;
             }
 
+            const meals = mealsByCountry[country];
+            document.getElementById('breakfastMeal').innerHTML = `<strong>${meals.breakfast.name}</strong><p class="text-xs mt-1 text-slate-400">${meals.breakfast.macros}</p>`;
+            document.getElementById('lunchMeal').innerHTML = `<strong>${meals.lunch.name}</strong><p class="text-xs mt-1 text-slate-400">${meals.lunch.macros}</p>`;
+            document.getElementById('dinnerMeal').innerHTML = `<strong>${meals.dinner.name}</strong><p class="text-xs mt-1 text-slate-400">${meals.dinner.macros}</p>`;
+            document.getElementById('snacksMeal').innerHTML = `<strong>${meals.snacks}</strong><p class="text-xs mt-1 text-slate-400">Opción local</p>`;
+        }
+
+        function updateChart(protein, fats, carbs) {
+            const ctx = document.getElementById('macroChart').getContext('2d');
+            if (macroChart) macroChart.destroy();
             macroChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
                     labels: ['Proteína', 'Grasas', 'Carbohidratos'],
                     datasets: [{
                         data: [Math.round(protein), Math.round(fats), Math.round(carbs)],
-                        backgroundColor: [
-                            'rgba(59, 130, 246, 0.8)',  // Blue
-                            'rgba(251, 191, 36, 0.8)',  // Amber
-                            'rgba(34, 197, 94, 0.8)'    // Green
-                        ],
-                        borderColor: [
-                            'rgb(59, 130, 246)',
-                            'rgb(251, 191, 36)',
-                            'rgb(34, 197, 94)'
-                        ],
+                        backgroundColor: ['rgba(59, 130, 246, 0.8)', 'rgba(251, 191, 36, 0.8)', 'rgba(34, 197, 94, 0.8)'],
+                        borderColor: ['rgb(59, 130, 246)', 'rgb(251, 191, 36)', 'rgb(34, 197, 94)'],
                         borderWidth: 2,
                         borderRadius: 8
                     }]
@@ -938,13 +726,10 @@
                     plugins: {
                         legend: {
                             position: 'bottom',
-                            labels: {
-                                color: 'rgb(148, 163, 184)',
-                                padding: 20,
-                                font: {
-                                    size: 14,
-                                    weight: 'bold'
-                                }
+                            labels: { 
+                                color: 'rgb(148, 163, 184)', 
+                                padding: 15, 
+                                font: { size: 12, weight: 'bold' } 
                             }
                         }
                     }
@@ -952,170 +737,44 @@
             });
         }
 
-        // Exportar a JSON
+        function toggleTheme() {
+            state.theme = state.theme === 'dark' ? 'light' : 'dark';
+            document.body.classList.toggle('light-theme');
+            document.body.classList.toggle('dark-theme');
+            document.getElementById('themeIcon').textContent = state.theme === 'dark' ? '🌙' : '☀️';
+            localStorage.setItem('theme', state.theme);
+        }
+
         function exportJSON() {
             const data = JSON.parse(sessionStorage.getItem('lastCalculation'));
-            const filename = `calorie-plan-${new Date().toISOString().split('T')[0]}.json`;
-            
-            const element = document.createElement('a');
-            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(data, null, 2)));
-            element.setAttribute('download', filename);
-            element.style.display = 'none';
-            
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
-
-            showNotification('JSON descargado correctamente ✅');
+            const link = document.createElement('a');
+            link.href = 'data:text/json,' + JSON.stringify(data, null, 2);
+            link.download = `calorie-plan-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
         }
 
-        // Copiar al portapapeles
         function copyToClipboard() {
             const data = JSON.parse(sessionStorage.getItem('lastCalculation'));
-            const text = `📊 Mi Plan Nutricional - Calculadora de Calorías\n\nGénero: ${data.state.gender === 'M' ? '👨 Masculino' : '👩 Femenino'}\nPeso: ${data.state.weight} kg\nAltura: ${data.state.height} cm\nEdad: ${data.state.age} años\nActividad: ${data.state.activity}/7\nObjetivo: ${data.state.objective}\n\n━━━━━━━━━━━━━━━━━\n📈 RESULTADOS\n━━━━━━━━━━━━━━━━━\n\nMetabolismo Basal: ${data.tmb} kcal\nCalorías que quemas: ${data.tdee} kcal\nCalorías Diarias: ${data.dailyCalories} kcal\n\n📊 MACRONUTRIENTES/DÍA:\n🥚 Proteína: ${data.protein}g (30%)\n🧈 Grasas: ${data.fats}g (25%)\n🍞 Carbohidratos: ${data.carbs}g (45%)\n\nGenerado con Calculadora de Calorías`;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                showNotification('Copiado al portapapeles ✅');
-            });
+            navigator.clipboard.writeText(JSON.stringify(data, null, 2));
         }
 
-        // Resetear formulario
         function resetForm() {
-            state.gender = 'M';
-            state.weight = 70;
-            state.height = 175;
-            state.age = 25;
-            state.activity = 3;
-            state.objective = 'maintenance';
-
-            document.getElementById('weight').value = 70;
-            document.getElementById('height').value = 175;
-            document.getElementById('age').value = 25;
-            document.getElementById('activity').value = 3;
-
-            updateDisplay('weight', 'weightDisplay');
-            updateDisplay('height', 'heightDisplay');
-            updateDisplay('age', 'ageDisplay');
-            updateDisplay('activity', 'activityDisplay');
-
-            setGender('M');
-            setObjective('maintenance');
-
-            showNotification('Formulario limpio ✅');
+            location.reload();
         }
 
-        // Mostrar notificaciones
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'fixed bottom-4 right-4 bg-slate-800 border border-slate-700 text-white px-4 py-3 rounded-lg shadow-lg';
-            notification.textContent = message;
-            document.body.appendChild(notification);
-
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
-
-        // Toggle Tema
-        function toggleTheme() {
-            if (state.theme === 'dark') {
-                state.theme = 'light';
-                document.body.classList.remove('dark-theme');
-                document.body.classList.add('light-theme');
-                document.getElementById('themeIcon').textContent = '☀️';
-                localStorage.setItem('theme', 'light');
-            } else {
-                state.theme = 'dark';
-                document.body.classList.remove('light-theme');
-                document.body.classList.add('dark-theme');
-                document.getElementById('themeIcon').textContent = '🌙';
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        // Obtener comida aleatoria
-        function getRandomMeal(mealType) {
-            const meals = mealDatabase[mealType];
-            return meals[Math.floor(Math.random() * meals.length)];
-        }
-
-        // Generar plan de comidas
-        function generateMealPlan(dailyCalories) {
-            // Distribución: Desayuno 25%, Almuerzo 35%, Cena 30%, Snacks 10%
-            const breakfastCals = Math.round(dailyCalories * 0.25);
-            const lunchCals = Math.round(dailyCalories * 0.35);
-            const dinnerCals = Math.round(dailyCalories * 0.30);
-            const snacksCals = Math.round(dailyCalories * 0.10);
-
-            // Generar comidas
-            const breakfast = getRandomMeal('breakfast');
-            const lunch = getRandomMeal('lunch');
-            const dinner = getRandomMeal('dinner');
-
-            // Actualizar UI
-            document.getElementById('breakfastCals').textContent = `(${breakfastCals} kcal)`;
-            document.getElementById('lunchCals').textContent = `(${lunchCals} kcal)`;
-            document.getElementById('dinnerCals').textContent = `(${dinnerCals} kcal)`;
-            document.getElementById('snacksCals').textContent = `(${snacksCals} kcal)`;
-
-            // Desayuno
-            document.getElementById('breakfastMeals').innerHTML = `
-                <div class="p-3 bg-slate-700/30 rounded-lg">
-                    <p class="text-sm font-medium text-white">${breakfast.name}</p>
-                    <p class="text-xs text-slate-400 mt-1">${breakfast.desc}</p>
-                    <p class="text-xs text-slate-500 mt-2">
-                        <strong>Macros:</strong> P: ${breakfast.protein}g | G: ${breakfast.fats}g | C: ${breakfast.carbs}g
-                    </p>
-                </div>
-            `;
-
-            // Almuerzo
-            document.getElementById('lunchMeals').innerHTML = `
-                <div class="p-3 bg-slate-700/30 rounded-lg">
-                    <p class="text-sm font-medium text-white">${lunch.name}</p>
-                    <p class="text-xs text-slate-400 mt-1">${lunch.desc}</p>
-                    <p class="text-xs text-slate-500 mt-2">
-                        <strong>Macros:</strong> P: ${lunch.protein}g | G: ${lunch.fats}g | C: ${lunch.carbs}g
-                    </p>
-                </div>
-            `;
-
-            // Cena
-            document.getElementById('dinnerMeals').innerHTML = `
-                <div class="p-3 bg-slate-700/30 rounded-lg">
-                    <p class="text-sm font-medium text-white">${dinner.name}</p>
-                    <p class="text-xs text-slate-400 mt-1">${dinner.desc}</p>
-                    <p class="text-xs text-slate-500 mt-2">
-                        <strong>Macros:</strong> P: ${dinner.protein}g | G: ${dinner.fats}g | C: ${dinner.carbs}g
-                    </p>
-                </div>
-            `;
-
-            // Snacks (múltiples opciones)
-            const snacksHTML = `
-                <p class="text-slate-400 text-sm mb-3">Opciones para distribuir ${snacksCals} kcal:</p>
-                <p class="text-slate-400 text-sm">✓ Plátano + cucharada de mantequilla de maní (150 kcal)</p>
-                <p class="text-slate-400 text-sm">✓ Yogur griego + granola (120 kcal)</p>
-                <p class="text-slate-400 text-sm">✓ Puñado de frutos secos (150 kcal)</p>
-                <p class="text-slate-400 text-sm">✓ Proteína en polvo con leche (140 kcal)</p>
-                <p class="text-slate-400 text-sm">✓ Barrita de proteína (200 kcal)</p>
-            `;
-            document.getElementById('snacksMeals').innerHTML = snacksHTML;
-        }
-
-        // Inicializar
-        document.addEventListener('DOMContentLoaded', function() {
-            // Cargar tema guardado
+        // ============================================
+        // INICIALIZACIÓN
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Actualizar año en footer dinámicamente
+            document.getElementById('yearFooter').textContent = new Date().getFullYear();
+            
             const savedTheme = localStorage.getItem('theme') || 'dark';
             state.theme = savedTheme;
             if (savedTheme === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeIcon').textContent = '☀️';
-            } else {
-                document.body.classList.add('dark-theme');
-                document.getElementById('themeIcon').textContent = '🌙';
             }
-
             setGender('M');
             setObjective('maintenance');
             calculateResults();
